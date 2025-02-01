@@ -65,7 +65,7 @@ background: #1d1d1d;
   top: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--card-bg-color); /* Replace with actual color value */
+  background-color: #1e1e1e; /* Replace with actual color value */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@ background: #1d1d1d;
 }
 
 .sidebar.hide {
-  display: flex;
+  display: none;
 }
 
 .sidebar.show {
@@ -125,7 +125,7 @@ background: #1d1d1d;
 
 @media screen and (max-width: 640px) {
   .react-text {
-    display: none; /* sm:hidden in Tailwind */
+    display: block; /* sm:hidden in Tailwind */
   }
 }
 
@@ -138,27 +138,19 @@ background: #1d1d1d;
   flex-grow: 1;
 }
 
-.sidebar-close-button {
-  display: block;
-}
-
-@media screen and (max-width: 640px) {
+/* @media screen and (max-width: 640px) {
   .flex-grow-container {
-    display: none; /* sm:hidden in Tailwind */
+    display: none; 
   }
 
   .sidebar-close-button {
-    display: none; /* sm:hidden in Tailwind */
+    display: none;
   }
-}
+} */
 
 @media screen and (min-width: 1280px) {
   .flex-grow-container {
     display: block; /* xl:block in Tailwind */
-  }
-
-  .sidebar-close-button {
-    display: block; /* block is default for this class */
   }
 }
 .sidebar-container {
@@ -185,7 +177,7 @@ background: #1d1d1d;
 
 @media screen and (min-width: 640px) {
   .sidebar-header {
-    display: none;
+    display: block;
   }
 }
 
@@ -244,16 +236,17 @@ background: #1d1d1d;
   height: 112px;
   display: none;
 }
-
-@media screen and (min-width: 640px) {
+@media screen and (max-width: 1270px) {
+  .sidebar-header, .react-text {
+    display: none;
+  }
+  .sidebar-shortcuts-title{
+    font-size: 0.7rem;
+    margin-left: 5px;
+  }
   .sidebar-footer-content{
     padding-left: 5px !important;
     padding-right: 1px !important;
-  }
-  .sidebar-footer {
-    display: block;
-    height: 170px;
-    padding: 3px !important;
   }
   .sidebar-footer-percentage{
     text-align: left !important;
@@ -262,6 +255,18 @@ background: #1d1d1d;
   .sidebar-footer-line {
     width: 90% !important;
   }
+  .sidebar-footer{
+    padding-left: 3px;
+  }
+
+}
+@media screen and (min-width: 640px) {
+  
+  .sidebar-footer {
+    display: block;
+    height: 170px;
+  }
+  
 }
 
 .sidebar-footer-content {
@@ -273,10 +278,7 @@ background: #1d1d1d;
   overflow: hidden;
   background-image: url('https://assets.codepen.io/3685267/res-react-dash-usage-card.svg');
 }
-.sidebar-shortcuts-title{
-  font-size: 0.7rem;
-  margin-left: 5px;
-}
+
 .sidebar-footer-text {
   display: block;
   padding-top: 12px;
@@ -403,6 +405,7 @@ background: #1d1d1d;
 .menu-title {
   display: none;
   margin-left: 0.5rem; /* ml-2 */
+  width: 100%;
 }
 
 @media screen and (min-width: 1280px) { /* xl */
@@ -553,6 +556,7 @@ background: #1d1d1d;
   .sidebar-toggle {
     display: block;
   }
+  
 }
 
 /* Search Bar */
@@ -1164,4 +1168,37 @@ background: #1d1d1d;
   justify-content: center;
   margin-top: 16px;
   color: white;
+}
+.sidebar-close-button{
+  display: none;
+}
+@media screen and (max-width: 640px){
+  .sidebar{
+    display: none;
+  }
+  .header{
+    flex-direction: column;
+  }
+  .icon-image{
+    width: 20px;
+    height: auto;
+    margin-left: 90px;
+  }
+  .sidebar-toggle{
+    display: contents;
+    color: white;
+  }
+  .menu-title, .react-text, .sidebar-footer, .sidebar-header{
+    display: block;
+  }
+  .sidebar-close-button{
+    display: block;
+  }
+  .search-container{
+    margin-right: 70px;
+    width: 80%;
+  }
+  .graph-container, .top-countries-container, .segmentation-container, .satisfaction-container, .add-component-container-out{
+    width: 100% !important;
+  }
 }

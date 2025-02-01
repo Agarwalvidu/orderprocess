@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from "recharts";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faCog } from '@fortawesome/free-solid-svg-icons';
 import clsx from "clsx";
 import "./dash.css";
 
@@ -91,7 +93,7 @@ const graphData = [
 });
 
 const Dashboard = () => {
-  const [showSidebar, onSetShowSidebar] = useState(false);
+  const [showSidebar, onSetShowSidebar] = useState(true);
   return (
     <div className="flex">
       <Sidebar
@@ -302,7 +304,7 @@ function Content({ onSidebarHide }) {
               </div>
             </div>
             <IconButton
-              icon="res-react-dash-sidebar-open"
+              icon={faBars}
               className="sidebar-toggle"
               onClick={onSidebarHide}
             />
@@ -689,14 +691,10 @@ function Icon({ path = 'options', className = 'icon-small' }) {
   );
 }
 
-function IconButton({ onClick = () => {}, icon = 'options', className = 'icon-button' }) {
+function IconButton({ onClick = () => {}, icon = faBars, className = 'icon-button' }) {
   return (
     <button onClick={onClick} type="button" className={className}>
-      <img
-        src={`https://assets.codepen.io/3685267/${icon}.svg`}
-        alt=""
-        className="icon-image"
-      />
+      <FontAwesomeIcon icon={icon} className="icon-image" />
     </button>
   );
 }
