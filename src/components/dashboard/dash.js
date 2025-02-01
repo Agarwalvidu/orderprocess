@@ -5,11 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import "./dash.css";
 
-// const map = (value, sMin, sMax, dMin, dMax) => {
-//   return dMin + ((value - sMin) / (sMax - sMin)) * (dMax - dMin);
-// };
-// const pi = Math.PI;
-
 const employeeData = [
   {
     id: 1,
