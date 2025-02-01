@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from "recharts";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCog } from '@fortawesome/free-solid-svg-icons';
-import clsx from "clsx";
+import { faBars, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import "./dash.css";
 
-const map = (value, sMin, sMax, dMin, dMax) => {
-  return dMin + ((value - sMin) / (sMax - sMin)) * (dMax - dMin);
-};
-const pi = Math.PI;
-const tau = 2 * pi;
+// const map = (value, sMin, sMax, dMin, dMax) => {
+//   return dMin + ((value - sMin) / (sMax - sMin)) * (dMax - dMin);
+// };
+// const pi = Math.PI;
 
 const employeeData = [
   {
@@ -124,13 +122,13 @@ function Sidebar({ onSidebarHide, showSidebar }) {
     <div className={`sidebar ${showSidebar ? 'show' : 'hide'}`}>
       <div className="flex-container">
       <div className="sidebar-container">
-      <IconButton icon="res-react-dash-logo" className="icon-button" />
+      <IconButton icon={faUser} className="icon-button" />
       <div className="react-text">
   React
 </div>
 <div className="flex-grow-container"></div>
 <IconButton
-  icon="res-react-dash-sidebar-close"
+  icon={faTimes}
   className="sidebar-close-button"
   onClick={onSidebarHide}
 />
@@ -456,7 +454,7 @@ function Graph() {
       </div>
       <div className="graph-subtitle">Nov - July</div>
 
-      <div className="graph-body">
+      <div className="graph-body" style={{ height: '280px' }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart width={500} height={300} data={graphData}>
             <defs>
@@ -558,11 +556,11 @@ function Segmentation() {
 }
 
 function Satisfication() {
-  const { dashOffset } = useSpring({
-    dashOffset: 78.54,
-    from: { dashOffset: 785.4 },
-    config: config.molasses,
-  });
+  // const { dashOffset } = useSpring({
+  //   dashOffset: 78.54,
+  //   from: { dashOffset: 785.4 },
+  //   config: config.molasses,
+  // });
 
   return (
     <div className="satisfication-container">
@@ -693,7 +691,7 @@ function Icon({ path = 'options', className = 'icon-small' }) {
 
 function IconButton({ onClick = () => {}, icon = faBars, className = 'icon-button' }) {
   return (
-    <button onClick={onClick} type="button" className={className}>
+    <button onClick={onClick} type="button" className={className} style={{color: "white"}}>
       <FontAwesomeIcon icon={icon} className="icon-image" />
     </button>
   );
