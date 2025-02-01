@@ -21,7 +21,8 @@ export const Inventory = () => {
       budget: "$260,000,000",
     },
     {
-      title: "Frozen II",
+      title : "Frozen II",
+      
       released: 2019,
       studio: "Disney",
       worldwideGross: "$1,453,683,476",
