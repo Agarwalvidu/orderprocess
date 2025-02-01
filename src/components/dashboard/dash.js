@@ -134,6 +134,7 @@ function Sidebar({ onSidebarHide, showSidebar }) {
   icon={faTimes}
   className="sidebar-close-button"
   onClick={onSidebarHide}
+  style={{ color: 'black' }}
 />
 </div>
       </div>
@@ -575,7 +576,7 @@ function Satisfication() {
 
   return (
     <div className="satisfication-container">
-      <div className="header">
+      <div className="sat-header">
         <div className="title">Satisfaction</div>
         <Icon path="res-react-dash-options" className="icon-small" />
       </div>
