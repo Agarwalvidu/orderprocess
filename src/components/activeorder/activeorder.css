@@ -1,0 +1,65 @@
+/* Styling for the table container */
+.orders-container {
+    padding: 20px;
+    margin-left: 250px;
+    width: calc(100% - 300px);
+  }
+  
+  /* Scrollable table wrapper */
+  .scrollable-table {
+    width: 100%;
+    overflow-y: auto;
+    max-height: 610px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  /* Table styles */
+  .unique-active-orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+    text-align: left;
+  }
+  
+  /* Table Header styles */
+  .unique-active-orders-table th {
+    padding: 12px 15px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    position: sticky;
+    top: 0; /* Keeps the header fixed at the top */
+    z-index: 1; /* Ensures that the header stays on top of table content */
+  }
+  
+  /* Table Row and Cell styles */
+  .unique-active-orders-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+  }
+  
+  /* Hover effect for rows */
+  .unique-active-orders-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Empty state styling */
+  .unique-active-orders-table td[colspan="10"] {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+  }
+  
+  /* Optional: Add striped effect to rows for better readability */
+  .unique-active-orders-table tr:nth-child(odd) td {
+    background-color: #f1f1f1;
+  }
+  
+  .unique-active-orders-table tr:nth-child(even) td {
+    background-color: #ffffff;
+  }
+  

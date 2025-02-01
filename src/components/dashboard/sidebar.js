@@ -57,11 +57,12 @@ const sidebarItems = [
         </div>
         <div className="sidebar-container-next">
     <div className="sidebar-header">
+      <a href="/orders">
       <div className="sidebar-header-content">
         <Icon path="res-react-dash-sidebar-card" className="icon-size" />
         <div className="sidebar-header-text">
-          <div className="sidebar-title">Sales House</div>
-          <div className="sidebar-subtitle">General Item</div>
+          <div className="sidebar-title">Active Orders/ </div>
+          <div className="sidebar-subtitle">Returns</div>
         </div>
         <div className="sidebar-grow"></div>
         <Icon
@@ -69,6 +70,7 @@ const sidebarItems = [
           className="icon-small"
         />
       </div>
+      </a>
     </div>
   
     {sidebarItems[0].map((i) => (
