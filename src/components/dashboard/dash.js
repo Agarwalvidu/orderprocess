@@ -119,264 +119,246 @@ function Sidebar({ onSidebarHide, showSidebar }) {
     config: config.molasses,
   });
   return (
-    <div
-      className={clsx(
-        'fixed inset-y-0 left-0 bg-card w-full sm:w-20 xl:w-60 sm:flex flex-col z-10',
-        showSidebar ? 'flex' : 'hidden',
-      )}
-    >
-      <div className="flex-shrink-0 overflow-hidden p-2">
-        <div className="flex items-center h-full sm:justify-center xl:justify-start p-2 sidebar-separator-top">
-          <IconButton icon="res-react-dash-logo" className="w-10 h-10" />
-          <div className="block sm:hidden xl:block ml-2 font-bold text-xl text-white">
-            React
-          </div>
-          <div className="flex-grow sm:hidden xl:block" />
-          <IconButton
-            icon="res-react-dash-sidebar-close"
-            className="block sm:hidden"
-            onClick={onSidebarHide}
-          />
-        </div>
+    <div className={`sidebar ${showSidebar ? 'show' : 'hide'}`}>
+      <div className="flex-container">
+      <div className="sidebar-container">
+      <IconButton icon="res-react-dash-logo" className="icon-button" />
+      <div className="react-text">
+  React
+</div>
+<div className="flex-grow-container"></div>
+<IconButton
+  icon="res-react-dash-sidebar-close"
+  className="sidebar-close-button"
+  onClick={onSidebarHide}
+/>
+</div>
       </div>
-      <div className="flex-grow overflow-x-hidden overflow-y-auto flex flex-col">
-        <div className="w-full p-3 h-24 sm:h-20 xl:h-24 hidden sm:block flex-shrink-0">
-          <div className="bg-sidebar-card-top rounded-xl w-full h-full flex items-center justify-start sm:justify-center xl:justify-start px-3 sm:px-0 xl:px-3">
-            <Icon path="res-react-dash-sidebar-card" className="w-9 h-9 " />
-            <div className="block sm:hidden xl:block ml-3">
-              <div className="text-sm font-bold text-white">Sales House</div>
-              <div className="text-sm">General Item</div>
-            </div>
-            <div className="block sm:hidden xl:block flex-grow" />
-            <Icon
-              path="res-react-dash-sidebar-card-select"
-              className="block sm:hidden xl:block w-5 h-5"
-            />
+      <div className="sidebar-container-next">
+  <div className="sidebar-header">
+    <div className="sidebar-header-content">
+      <Icon path="res-react-dash-sidebar-card" className="icon-size" />
+      <div className="sidebar-header-text">
+        <div className="sidebar-title">Sales House</div>
+        <div className="sidebar-subtitle">General Item</div>
+      </div>
+      <div className="sidebar-grow"></div>
+      <Icon
+        path="res-react-dash-sidebar-card-select"
+        className="icon-small"
+      />
+    </div>
+  </div>
+
+  {sidebarItems[0].map((i) => (
+    <MenuItem
+      key={i.id}
+      item={i}
+      onClick={setSelected}
+      selected={selected}
+    />
+  ))}
+  
+  <div className="sidebar-shortcuts-title">SHORTCUTS</div>
+
+  {sidebarItems[1].map((i) => (
+    <MenuItem
+      key={i.id}
+      item={i}
+      onClick={setSelected}
+      selected={selected}
+    />
+  ))}
+
+  <div className="sidebar-grow"></div>
+
+  <div className="sidebar-footer">
+    <div className="sidebar-footer-content">
+      <div
+        className="sidebar-background"
+        style={{
+          backgroundImage: "url('https://assets.codepen.io/3685267/res-react-dash-usage-card.svg')",
+        }}
+      >
+        <div className="sidebar-footer-text">
+          <div className="sidebar-footer-title">Used Space</div>
+          <div className="sidebar-footer-subtitle">
+            Admin updated 09:12 am November 08,2020
+          </div>
+          <animated.div className="sidebar-footer-percentage">
+            {precentage.interpolate((i) => `${Math.round(i)}%`)}
+          </animated.div>
+          <div className="sidebar-footer-line">
+            <svg
+              viewBox="0 0 100 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="5"
+                y1="5.25"
+                x2="95"
+                y2="5.25"
+                stroke="#3C3C3C"
+                strokeWidth="5"
+                strokeLinecap="round"
+              />
+              <animated.line
+                x1="5"
+                y1="5.25"
+                x2={indicatorWidth}
+                y2="5.25"
+                stroke="currentColor"
+                strokeWidth="5"
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
         </div>
-        {sidebarItems[0].map((i) => (
-          <MenuItem
-            key={i.id}
-            item={i}
-            onClick={setSelected}
-            selected={selected}
-          />
-        ))}
-        <div className="mt-8 mb-0 font-bold px-3 block sm:hidden xl:block">
-          SHORTCUTS
-        </div>
-        {sidebarItems[1].map((i) => (
-          <MenuItem
-            key={i.id}
-            item={i}
-            onClick={setSelected}
-            selected={selected}
-          />
-        ))}
-        <div className="flex-grow" />
-        <div className="w-full p-3 h-28 hidden sm:block sm:h-20 xl:h-32">
-          <div
-            className="rounded-xl w-full h-full px-3 sm:px-0 xl:px-3 overflow-hidden"
-            style={{
-              backgroundImage: "url('https://assets.codepen.io/3685267/res-react-dash-usage-card.svg')",
-            }}
+
+        <div className="sidebar-footer-mobile">
+          <svg
+            width="56"
+            height="56"
+            viewBox="0 0 56 56"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <div className="block sm:hidden xl:block pt-3">
-              <div className="font-bold text-gray-300 text-sm">Used Space</div>
-              <div className="text-gray-500 text-xs">
-                Admin updated 09:12 am November 08,2020
-              </div>
-              <animated.div className="text-right text-gray-400 text-xs">
-                {precentage.interpolate((i) => `${Math.round(i)}%`)}
-              </animated.div>
-              <div className="w-full text-gray-300">
-                <svg
-                  viewBox="0 0 100 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line
-                    x1="5"
-                    y1="5.25"
-                    x2="95"
-                    y2="5.25"
-                    stroke="#3C3C3C"
-                    strokeWidth="5"
-                    strokeLinecap="round"
-                  />
-                  <animated.line
-                    x1="5"
-                    y1="5.25"
-                    x2={indicatorWidth}
-                    y2="5.25"
-                    stroke="currentColor"
-                    strokeWidth="5"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            <div className="hidden sm:block xl:hidden ">
-              <svg
-                width="56"
-                height="56"
-                viewBox="0 0 56 56"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="56" height="56" fill="#2C2C2D" />
-                <path
-                  d="M 28 28 m 0, -18 a 18 18 0 0 1 0 36 a 18 18 0 0 1 0 -36"
-                  stroke="#3C3C3C"
-                  strokeWidth="6"
-                />
-                <animated.path
-                  d="M 28 28 m 0, -18 a 18 18 0 0 1 0 36 a 18 18 0 0 1 0 -36"
-                  stroke="#fff"
-                  strokeLinecap="round"
-                  strokeDasharray="113.113"
-                  strokeDashoffset={dashOffset}
-                  strokeWidth="6"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex-shrink-0 overflow-hidden p-2">
-        <div className="flex items-center h-full sm:justify-center xl:justify-start p-2 sidebar-separator-bottom">
-          <Image path="mock_faces_8" className="w-10 h-10" />
-          <div className="block sm:hidden xl:block ml-2 font-bold ">
-            Jerry Wilson
-          </div>
-          <div className="flex-grow block sm:hidden xl:block" />
-          <Icon
-            path="res-react-dash-options"
-            className="block sm:hidden xl:block w-3 h-3"
-          />
+            <rect width="56" height="56" fill="#2C2C2D" />
+            <path
+              d="M 28 28 m 0, -18 a 18 18 0 0 1 0 36 a 18 18 0 0 1 0 -36"
+              stroke="#3C3C3C"
+              strokeWidth="6"
+            />
+            <animated.path
+              d="M 28 28 m 0, -18 a 18 18 0 0 1 0 36 a 18 18 0 0 1 0 -36"
+              stroke="#fff"
+              strokeLinecap="round"
+              strokeDasharray="113.113"
+              strokeDashoffset={dashOffset}
+              strokeWidth="6"
+            />
+          </svg>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+<div className="sidebar-item-container">
+  <div className="sidebar-item-content">
+    <Image path="mock_faces_8" className="image-size" />
+    <div className="sidebar-item-text">
+      Jerry Wilson
+    </div>
+    <div className="sidebar-item-grow"></div>
+    <Icon
+      path="res-react-dash-options"
+      className="icon-small"
+    />
+  </div>
+</div>
+
+    </div>
   );
 }
-function MenuItem({ item: { id, title, notifications }, onClick, selected }) {
+function MenuItem({ item: { id, title, notifications }, onClick, selected }) { 
   return (
     <div
-      className={clsx(
-        'w-full mt-6 flex items-center px-3 sm:px-0 xl:px-3 justify-start sm:justify-center xl:justify-start sm:mt-6 xl:mt-3 cursor-pointer',
-        selected === id ? 'sidebar-item-selected' : 'sidebar-item',
-      )}
+      className={`menu-item ${selected === id ? 'menu-item-selected' : ''}`}
       onClick={() => onClick(id)}
     >
       <SidebarIcons id={id} />
-      <div className="block sm:hidden xl:block ml-2">{title}</div>
-      <div className="block sm:hidden xl:block flex-grow" />
+      <div className="menu-title">{title}</div>
+      <div className="menu-spacer"></div>
       {notifications && (
-        <div className="flex sm:hidden xl:flex bg-pink-600  w-5 h-5 flex items-center justify-center rounded-full mr-2">
-          <div className="text-white text-sm">{notifications}</div>
+        <div className="menu-notification">
+          <div className="menu-notification-text">{notifications}</div>
         </div>
       )}
     </div>
   );
 }
+
 function Content({ onSidebarHide }) {
   return (
-    <div className="flex w-full">
-      <div className="w-full h-screen hidden sm:block sm:w-20 xl:w-60 flex-shrink-0">
-        .
-      </div>
-      <div className=" h-screen flex-grow overflow-x-hidden overflow-auto flex flex-wrap content-start p-2">
-        <div className="w-full sm:flex p-2 items-end">
-          <div className="sm:flex-grow flex justify-between">
-            <div className="">
-              <div className="flex items-center">
-                <div className="text-3xl font-bold text-white">Hello David</div>
-                <div className="flex items-center p-2 bg-card ml-2 rounded-xl">
+    <div className="content-container">
+      <div className="sidebar-placeholder">.</div>
+      <div className="main-content">
+        <div className="header">
+          <div className="header-content">
+            <div className="header-left">
+              <div className="header-title">
+                <div className="title-text">Hello David</div>
+                <div className="premium-badge">
                   <Icon path="res-react-dash-premium-star" />
-
-                  <div className="ml-2 font-bold text-premium-yellow">
-                    PREMIUM
-                  </div>
+                  <div className="premium-text">PREMIUM</div>
                 </div>
               </div>
-              <div className="flex items-center">
-                <Icon
-                  path="res-react-dash-date-indicator"
-                  className="w-3 h-3"
-                />
-                <div className="ml-2">October 26</div>
+              <div className="date-info">
+                <Icon path="res-react-dash-date-indicator" className="icon-small" />
+                <div className="date-text">October 26</div>
               </div>
             </div>
             <IconButton
               icon="res-react-dash-sidebar-open"
-              className="block sm:hidden"
+              className="sidebar-toggle"
               onClick={onSidebarHide}
             />
           </div>
-          <div className="w-full sm:w-56 mt-4 sm:mt-0 relative">
-            <Icon
-              path="res-react-dash-search"
-              className="w-5 h-5 search-icon left-3 absolute"
-            />
+          <div className="search-container">
+            <Icon path="res-react-dash-search" className="search-icon" />
             <form action="#" method="POST">
               <input
                 type="text"
                 name="company_website"
                 id="company_website"
-                className="pl-12 py-2 pr-2 block w-full rounded-lg border-gray-300 bg-card"
+                className="search-input"
                 placeholder="search"
               />
             </form>
           </div>
         </div>
-        {employeeData.map(
-          ({
-            id,
-            name,
-            position,
-            transactions,
-            rise,
-            tasksCompleted,
-            imgId,
-          }) => (
-            <NameCard
-              key={id}
-              id={id}
-              name={name}
-              position={position}
-              transactionAmount={transactions}
-              rise={rise}
-              tasksCompleted={tasksCompleted}
-              imgId={imgId}
-            />
-          ),
-        )}
+        {employeeData.map(({ id, name, position, transactions, rise, tasksCompleted, imgId }) => (
+          <NameCard
+            key={id}
+            id={id}
+            name={name}
+            position={position}
+            transactionAmount={transactions}
+            rise={rise}
+            tasksCompleted={tasksCompleted}
+            imgId={imgId}
+          />
+        ))}
 
-        <div className="w-full p-2 lg:w-2/3">
-          <div className="rounded-lg bg-card sm:h-80 h-60">
+        <div className="graph-container">
+          <div className="graph-card">
             <Graph />
           </div>
         </div>
-        <div className="w-full p-2 lg:w-1/3">
-          <div className="rounded-lg bg-card h-80">
+
+        <div className="top-countries-container">
+          <div className="top-countries-card">
             <TopCountries />
           </div>
         </div>
 
-        <div className="w-full p-2 lg:w-1/3">
-          <div className="rounded-lg bg-card h-80">
+        <div className="segmentation-container">
+          <div className="segmentation-card-out">
             <Segmentation />
           </div>
         </div>
-        <div className="w-full p-2 lg:w-1/3">
-          <div className="rounded-lg bg-card h-80">
+
+        <div className="satisfaction-container" style={{paddingTop: "16px"}}>
+          <div className="satisfaction-card">
             <Satisfication />
           </div>
         </div>
-        <div className="w-full p-2 lg:w-1/3">
-          <div className="rounded-lg bg-card overflow-hidden h-80">
+
+        <div className="add-component-container-out" style={{paddingTop:"16px", marginLeft:"16px", width:"30.33%"}}>
+          <div className="add-component-card-out" >
             <AddComponent />
           </div>
         </div>
@@ -385,37 +367,31 @@ function Content({ onSidebarHide }) {
   );
 }
 
-function NameCard({
-  name,
-  position,
-  transactionAmount,
-  rise,
-  tasksCompleted,
-  imgId,
-}) {
+function NameCard({ name, position, transactionAmount, rise, tasksCompleted, imgId }) {
   const { transactions, barPlayhead } = useSpring({
     transactions: transactionAmount,
     barPlayhead: 1,
     from: { transactions: 0, barPlayhead: 0 },
   });
+
   return (
-    <div className="w-full p-2 lg:w-1/3">
-      <div className="rounded-lg bg-card flex justify-between p-3 h-32">
-        <div className="">
-          <div className="flex items-center">
-            <Image path={`mock_faces_${imgId}`} className="w-10 h-10" />
-            <div className="ml-2">
-              <div className="flex items-center">
-                <div className="mr-2 font-bold text-white">{name}</div>
+    <div className="name-card-container">
+      <div className="name-card">
+        <div className="name-card-left">
+          <div className="name-card-header">
+            <Image path={`mock_faces_${imgId}`} className="profile-img" />
+            <div className="name-info">
+              <div className="name-title">
+                <div className="name-text">{name}</div>
                 <Icon path="res-react-dash-tick" />
               </div>
-              <div className="text-sm ">{position}</div>
+              <div className="position">{position}</div>
             </div>
           </div>
 
-          <div className="text-sm  mt-2">{`${tasksCompleted} from 5 tasks completed`}</div>
+          <div className="tasks-completed">{`${tasksCompleted} from 5 tasks completed`}</div>
           <svg
-            className="w-44 mt-3"
+            className="progress-bar"
             height="6"
             viewBox="0 0 200 6"
             fill="none"
@@ -423,9 +399,7 @@ function NameCard({
           >
             <rect width="200" height="6" rx="3" fill="#2D2D2D" />
             <animated.rect
-              width={barPlayhead.interpolate(
-                (i) => i * (tasksCompleted / 5) * 200,
-              )}
+              width={barPlayhead.interpolate((i) => i * (tasksCompleted / 5) * 200)}
               height="6"
               rx="3"
               fill="url(#paint0_linear)"
@@ -442,56 +416,45 @@ function NameCard({
             </defs>
           </svg>
         </div>
-        <div className="flex flex-col items-center">
-          <Icon
-            path={rise ? 'res-react-dash-bull' : 'res-react-dash-bear'}
-            className="w-8 h-8"
-          />
-          <animated.div
-            className={clsx(
-              rise ? 'text-green-500' : 'text-red-500',
-              'font-bold',
-              'text-lg',
-            )}
-          >
+
+        <div className="name-card-right">
+          <Icon path={rise ? 'res-react-dash-bull' : 'res-react-dash-bear'} className="status-icon" />
+          <animated.div className={`transaction-amount ${rise ? 'text-green' : 'text-red'}`}>
             {transactions.interpolate((i) => `$${i.toFixed(2)}`)}
           </animated.div>
-          <div className="text-sm ">Last 6 month</div>
+          <div className="last-6-month">Last 6 months</div>
         </div>
       </div>
     </div>
   );
 }
+
 function Graph() {
-  const CustomTooltip = () => (
-    <div className="rounded-xl overflow-hidden tooltip-head">
-      <div className="flex items-center justify-between p-2">
-        <div className="">Revenue</div>
-        <Icon path="res-react-dash-options" className="w-2 h-2" />
+  const CustomTooltip = (props) => (
+    <div className="tooltip-container">
+      <div className="tooltip-header">
+        <div>Revenue</div>
+        <Icon path="res-react-dash-options" className="icon-small" />
       </div>
-      <div className="tooltip-body text-center p-3">
-        <div className="text-white font-bold">$1300.50</div>
-        <div className="">Revenue from 230 sales</div>
+      <div className="tooltip-body">
+        <div className="tooltip-value">$1300.50</div>
+        <div>Revenue from 230 sales</div>
       </div>
     </div>
   );
+
   return (
-    <div className="flex p-4 h-full flex-col">
-      <div className="">
-        <div className="flex items-center">
-          <div className="font-bold text-white">Your Work Summary</div>
-          <div className="flex-grow" />
-
-          <Icon path="res-react-dash-graph-range" className="w-4 h-4" />
-          <div className="ml-2">Last 9 Months</div>
-          <div className="ml-6 w-5 h-5 flex justify-center items-center rounded-full icon-background">
-            ?
-          </div>
-        </div>
-        <div className="font-bold ml-5">Nov - July</div>
+    <div className="graph-container" style={{width:"96%"}}>
+      <div className="graph-header">
+        <div className="graph-title">Your Work Summary</div>
+        <div className="graph-spacer" />
+        <Icon path="res-react-dash-graph-range" className="icon-medium" />
+        <div className="graph-range">Last 9 Months</div>
+        <div className="tooltip-icon">?</div>
       </div>
+      <div className="graph-subtitle">Nov - July</div>
 
-      <div className="flex-grow">
+      <div className="graph-body">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart width={500} height={300} data={graphData}>
             <defs>
@@ -500,35 +463,12 @@ function Graph() {
                 <stop offset="1" stopColor="#7D1C8D" />
               </linearGradient>
             </defs>
-            <CartesianGrid
-              horizontal={false}
-              strokeWidth="6"
-              stroke="#252525"
-            />
-            <XAxis
-              dataKey="name"
-              axisLine={false}
-              tickLine={false}
-              tickMargin={10}
-            />
+            <CartesianGrid horizontal={false} strokeWidth="6" stroke="#252525" />
+            <XAxis dataKey="name" axisLine={false} tickLine={false} tickMargin={10} />
             <YAxis axisLine={false} tickLine={false} tickMargin={10} />
             <Tooltip content={<CustomTooltip />} cursor={false} />
-            <Line
-              activeDot={false}
-              type="monotone"
-              dataKey="expectedRevenue"
-              stroke="#242424"
-              strokeWidth="3"
-              dot={false}
-              strokeDasharray="8 8"
-            />
-            <Line
-              type="monotone"
-              dataKey="revenue"
-              stroke="url(#paint0_linear)"
-              strokeWidth="4"
-              dot={false}
-            />
+            <Line activeDot={false} type="monotone" dataKey="expectedRevenue" stroke="#242424" strokeWidth="3" dot={false} strokeDasharray="8 8" />
+            <Line type="monotone" dataKey="revenue" stroke="url(#paint0_linear)" strokeWidth="4" dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -538,32 +478,29 @@ function Graph() {
 
 function TopCountries() {
   return (
-    <div className="flex p-4 flex-col h-full">
-      <div className="flex justify-between items-center">
-        <div className="text-white font-bold">Top Countries</div>
-        <Icon path="res-react-dash-plus" className="w-5 h-5" />
+    <div className="top-countries-container" style={{width:"95%"}}>
+      <div className="top-countries-header">
+        <div className="title">Top Countries</div>
+        <Icon path="res-react-dash-plus" className="icon-medium" />
       </div>
-      <div className="">favourites</div>
+      <div className="favorites">favourites</div>
       {Countrydata.map(({ name, rise, value, id }) => (
-        <div className="flex items-center mt-3" key={id}>
-          <div className="">{id}</div>
-
-          <Image path={`res-react-dash-flag-${id}`} className="ml-2 w-6 h-6" />
-          <div className="ml-2">{name}</div>
-          <div className="flex-grow" />
-          <div className="">{`$${value.toLocaleString()}`}</div>
+        <div className="country-item" key={id}>
+          <div className="country-id">{id}</div>
+          <Image path={`res-react-dash-flag-${id}`} className="country-flag" />
+          <div className="country-name">{name}</div>
+          <div className="spacer" />
+          <div className="country-value">{`$${value.toLocaleString()}`}</div>
           <Icon
-            path={
-              rise ? 'res-react-dash-country-up' : 'res-react-dash-country-down'
-            }
-            className="w-4 h-4 mx-3"
+            path={rise ? 'res-react-dash-country-up' : 'res-react-dash-country-down'}
+            className="icon-small"
           />
-          <Icon path="res-react-dash-options" className="w-2 h-2" />
+          <Icon path="res-react-dash-options" className="icon-xsmall" />
         </div>
       ))}
-      <div className="flex-grow" />
-      <div className="flex justify-center">
-        <div className="">Check All</div>
+      <div className="spacer" />
+      <div className="check-all-container">
+        <div>Check All</div>
       </div>
     </div>
   );
@@ -571,47 +508,48 @@ function TopCountries() {
 
 function Segmentation() {
   return (
-    <div className="p-4 h-full">
-      <div className="flex justify-between items-center">
-        <div className="text-white font-bold">Segmentation</div>
-
-        <Icon path="res-react-dash-options" className="w-2 h-2" />
+    <div className="segmentation-container" style={{width:"92%"}}>
+      <div className="segmentation-header">
+        <div className="segmentation-title">Segmentation</div>
+        <Icon path="res-react-dash-options" className="icon-small" />
       </div>
-      <div className="mt-3">All users</div>
+
+      <div className="segmentation-subtitle">All users</div>
+
       {segmentationData.map(({ c1, c2, c3, color }) => (
-        <div className="flex items-center" key={c1}>
+        <div className="segmentation-item" key={c1}>
           <div
-            className="w-2 h-2 rounded-full"
-            style={{
-              background: color,
-            }}
+            className="segmentation-dot"
+            style={{ background: color }}
           />
-          <div className="ml-2" style={{ color }}>
+          <div className="segmentation-text" style={{ color }}>
             {c1}
           </div>
-          <div className="flex-grow" />
-          <div className="" style={{ color }}>
+          <div className="segmentation-flex-grow" />
+          <div className="segmentation-percentage" style={{ color }}>
             {c2}
           </div>
-          <div className="ml-2 w-12 card-stack-border" />
-          <div className="ml-2 h-8">
+          <div className="segmentation-border" />
+          <div className="segmentation-card">
             <div
-              className="w-20 h-28 rounded-lg overflow-hidden"
-              style={{
-                background: c3,
-              }}
+              className="segmentation-card-bg"
+              style={{ background: c3 }}
             >
               {c1 === 'Other' && (
-                <img src="https://assets.codepen.io/3685267/res-react-dash-user-card.svg" alt="" />
+                <img
+                  src="https://assets.codepen.io/3685267/res-react-dash-user-card.svg"
+                  alt=""
+                  className="segmentation-image"
+                />
               )}
             </div>
           </div>
         </div>
       ))}
 
-      <div className="flex mt-3 px-3 items-center justify-between bg-details rounded-xl w-36 h-12">
-        <div className="">Details</div>
-        <Icon path="res-react-dash-chevron-right" className="w-4 h-4" />
+      <div className="segmentation-details">
+        <div>Details</div>
+        <Icon path="res-react-dash-chevron-right" className="icon-medium" />
       </div>
     </div>
   );
@@ -623,196 +561,28 @@ function Satisfication() {
     from: { dashOffset: 785.4 },
     config: config.molasses,
   });
+
   return (
-    <div className="p-4 h-full">
-      <div className="flex justify-between items-center">
-        <div className="text-white font-bold">Satisfication</div>
-        <Icon path="res-react-dash-options" className="w-2 h-2" />
-      </div>
-      <div className="mt-3">From all projects</div>
-      <div className="flex justify-center">
-        <svg
-          viewBox="0 0 700 380"
-          fill="none"
-          width="300"
-          xmlns="http://www.w3.org/2000/svg"
-          id="svg"
-        >
-          <path
-            d="M100 350C100 283.696 126.339 220.107 173.223 173.223C220.107 126.339 283.696 100 350 100C416.304 100 479.893 126.339 526.777 173.223C573.661 220.107 600 283.696 600 350"
-            stroke="#2d2d2d"
-            strokeWidth="40"
-            strokeLinecap="round"
-          />
-          <animated.path
-            d="M100 350C100 283.696 126.339 220.107 173.223 173.223C220.107 126.339 283.696 100 350 100C416.304 100 479.893 126.339 526.777 173.223C573.661 220.107 600 283.696 600 350"
-            stroke="#2f49d0"
-            strokeWidth="40"
-            strokeLinecap="round"
-            strokeDasharray="785.4"
-            strokeDashoffset={dashOffset}
-            id="svgPath"
-            className="svgPath"
-          />
-
-          <animated.circle
-            cx={dashOffset.interpolate(
-              (x) => 350 + 250 * Math.cos(map(x, 785.4, 0, pi, tau)),
-            )}
-            cy={dashOffset.interpolate(
-              (x) => 350 + 250 * Math.sin(map(x, 785.4, 0, pi, tau)),
-            )}
-            r="12"
-            fill="#fff"
-          />
-          <circle cx="140" cy="350" r="5" fill="#2f49d0" />
-          <circle
-            cx="144.5890038459008"
-            cy="306.3385449282706"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="158.15545389505382"
-            cy="264.58530495408195"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="180.10643118126103"
-            cy="226.56509701858067"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="209.48257266463972"
-            cy="193.93958664974724"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="244.9999999999999"
-            cy="168.1346652052679"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="285.10643118126103"
-            cy="150.27813157801776"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="328.0490227137926"
-            cy="141.15040197266262"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="371.95097728620715"
-            cy="141.1504019726626"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="414.8935688187389"
-            cy="150.27813157801774"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="454.9999999999999"
-            cy="168.1346652052678"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="490.51742733536014"
-            cy="193.93958664974713"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="519.8935688187389"
-            cy="226.5650970185806"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="541.8445461049462"
-            cy="264.58530495408183"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle
-            cx="555.4109961540992"
-            cy="306.33854492827044"
-            r="5"
-            fill="#2f49d0"
-          />
-          <circle cx="560" cy="349.99999999999994" r="5" fill="#2f49d0" />
-          <path
-            d="M349.292 375C395.845 375 433.583 337.261 433.583 290.708C433.583 244.155 395.845 206.417 349.292 206.417C302.739 206.417 265 244.155 265 290.708C265 337.261 302.739 375 349.292 375Z"
-            fill="white"
-          />
-          <path
-            d="M349.292 358.708C386.847 358.708 417.292 328.264 417.292 290.708C417.292 253.153 386.847 222.708 349.292 222.708C311.736 222.708 281.292 253.153 281.292 290.708C281.292 328.264 311.736 358.708 349.292 358.708Z"
-            fill="#D2D6E7"
-          />
-          <path
-            d="M347.167 343.833C376.898 343.833 401 319.731 401 290C401 260.269 376.898 236.167 347.167 236.167C317.435 236.167 293.333 260.269 293.333 290C293.333 319.731 317.435 343.833 347.167 343.833Z"
-            fill="#FFE17D"
-          />
-          <path
-            d="M347.167 316.482C339.696 316.482 332.608 313.623 328.204 308.835C327.391 307.953 327.449 306.58 328.331 305.768C329.213 304.956 330.588 305.013 331.399 305.896C334.996 309.807 340.89 312.141 347.167 312.141C353.443 312.141 359.338 309.807 362.935 305.896C363.745 305.013 365.121 304.956 366.003 305.768C366.885 306.58 366.942 307.953 366.13 308.835C361.725 313.623 354.637 316.482 347.167 316.482Z"
-            fill="#AA7346"
-          />
-          <path
-            d="M328.933 290C326.535 290 324.592 288.056 324.592 285.659V282.186C324.592 279.788 326.535 277.844 328.933 277.844C331.33 277.844 333.274 279.788 333.274 282.186V285.659C333.274 288.056 331.33 290 328.933 290Z"
-            fill="#7D5046"
-          />
-          <path
-            d="M328.933 277.844C328.635 277.844 328.345 277.875 328.064 277.932V283.922C328.064 285.361 329.231 286.527 330.669 286.527C332.108 286.527 333.274 285.361 333.274 283.922V282.186C333.274 279.788 331.331 277.844 328.933 277.844Z"
-            fill="#9C6846"
-          />
-          <path
-            d="M365.401 290C363.003 290 361.059 288.056 361.059 285.659V282.186C361.059 279.788 363.003 277.844 365.401 277.844C367.798 277.844 369.742 279.788 369.742 282.186V285.659C369.742 288.056 367.798 290 365.401 290Z"
-            fill="#7D5046"
-          />
-          <path
-            d="M365.401 277.844C365.103 277.844 364.813 277.875 364.532 277.932V283.922C364.532 285.361 365.699 286.527 367.137 286.527C368.576 286.527 369.742 285.361 369.742 283.922V282.186C369.742 279.788 367.798 277.844 365.401 277.844Z"
-            fill="#9C6846"
-          />
-          <path
-            d="M354.981 336.019C325.25 336.019 301.148 311.917 301.148 282.186C301.148 269.31 305.673 257.496 313.213 248.232C301.085 258.103 293.333 273.144 293.333 290C293.333 319.731 317.435 343.833 347.167 343.833C364.023 343.833 379.064 336.081 388.935 323.953C379.671 331.493 367.857 336.019 354.981 336.019Z"
-            fill="#FFD164"
-          />
-        </svg>
+    <div className="satisfication-container">
+      <div className="header">
+        <div className="title">Satisfaction</div>
+        <Icon path="res-react-dash-options" className="icon-small" />
       </div>
 
-      <div className="flex justify-center">
-        <div className="flex justify-between mt-2" style={{ width: '300px' }}>
-          <div className="" style={{ width: '50px', paddingLeft: '16px' }}>
-            0%
+      <div className="sub-title">From all projects</div>
+
+      <div className="svg-wrapper">
+        <svg viewBox="0 0 700 380" fill="none" width="300" xmlns="http://www.w3.org/2000/svg" id="svg"><path d="M100 350C100 283.696 126.339 220.107 173.223 173.223C220.107 126.339 283.696 100 350 100C416.304 100 479.893 126.339 526.777 173.223C573.661 220.107 600 283.696 600 350" stroke="#2d2d2d" stroke-width="40" stroke-linecap="round"></path><path d="M100 350C100 283.696 126.339 220.107 173.223 173.223C220.107 126.339 283.696 100 350 100C416.304 100 479.893 126.339 526.777 173.223C573.661 220.107 600 283.696 600 350" stroke="#2f49d0" stroke-width="40" stroke-linecap="round" stroke-dasharray="785.4" stroke-dashoffset="78.54" id="svgPath" class="svgPath"></path><circle cx="587.7641290737884" cy="272.7457514062631" r="12" fill="#fff"></circle><circle cx="140" cy="350" r="5" fill="#2f49d0"></circle><circle cx="144.5890038459008" cy="306.3385449282706" r="5" fill="#2f49d0"></circle><circle cx="158.15545389505382" cy="264.58530495408195" r="5" fill="#2f49d0"></circle><circle cx="180.10643118126103" cy="226.56509701858067" r="5" fill="#2f49d0"></circle><circle cx="209.48257266463972" cy="193.93958664974724" r="5" fill="#2f49d0"></circle><circle cx="244.9999999999999" cy="168.1346652052679" r="5" fill="#2f49d0"></circle><circle cx="285.10643118126103" cy="150.27813157801776" r="5" fill="#2f49d0"></circle><circle cx="328.0490227137926" cy="141.15040197266262" r="5" fill="#2f49d0"></circle><circle cx="371.95097728620715" cy="141.1504019726626" r="5" fill="#2f49d0"></circle><circle cx="414.8935688187389" cy="150.27813157801774" r="5" fill="#2f49d0"></circle><circle cx="454.9999999999999" cy="168.1346652052678" r="5" fill="#2f49d0"></circle><circle cx="490.51742733536014" cy="193.93958664974713" r="5" fill="#2f49d0"></circle><circle cx="519.8935688187389" cy="226.5650970185806" r="5" fill="#2f49d0"></circle><circle cx="541.8445461049462" cy="264.58530495408183" r="5" fill="#2f49d0"></circle><circle cx="555.4109961540992" cy="306.33854492827044" r="5" fill="#2f49d0"></circle><circle cx="560" cy="349.99999999999994" r="5" fill="#2f49d0"></circle><path d="M349.292 375C395.845 375 433.583 337.261 433.583 290.708C433.583 244.155 395.845 206.417 349.292 206.417C302.739 206.417 265 244.155 265 290.708C265 337.261 302.739 375 349.292 375Z" fill="white"></path><path d="M349.292 358.708C386.847 358.708 417.292 328.264 417.292 290.708C417.292 253.153 386.847 222.708 349.292 222.708C311.736 222.708 281.292 253.153 281.292 290.708C281.292 328.264 311.736 358.708 349.292 358.708Z" fill="#D2D6E7"></path><path d="M347.167 343.833C376.898 343.833 401 319.731 401 290C401 260.269 376.898 236.167 347.167 236.167C317.435 236.167 293.333 260.269 293.333 290C293.333 319.731 317.435 343.833 347.167 343.833Z" fill="#FFE17D"></path><path d="M347.167 316.482C339.696 316.482 332.608 313.623 328.204 308.835C327.391 307.953 327.449 306.58 328.331 305.768C329.213 304.956 330.588 305.013 331.399 305.896C334.996 309.807 340.89 312.141 347.167 312.141C353.443 312.141 359.338 309.807 362.935 305.896C363.745 305.013 365.121 304.956 366.003 305.768C366.885 306.58 366.942 307.953 366.13 308.835C361.725 313.623 354.637 316.482 347.167 316.482Z" fill="#AA7346"></path><path d="M328.933 290C326.535 290 324.592 288.056 324.592 285.659V282.186C324.592 279.788 326.535 277.844 328.933 277.844C331.33 277.844 333.274 279.788 333.274 282.186V285.659C333.274 288.056 331.33 290 328.933 290Z" fill="#7D5046"></path><path d="M328.933 277.844C328.635 277.844 328.345 277.875 328.064 277.932V283.922C328.064 285.361 329.231 286.527 330.669 286.527C332.108 286.527 333.274 285.361 333.274 283.922V282.186C333.274 279.788 331.331 277.844 328.933 277.844Z" fill="#9C6846"></path><path d="M365.401 290C363.003 290 361.059 288.056 361.059 285.659V282.186C361.059 279.788 363.003 277.844 365.401 277.844C367.798 277.844 369.742 279.788 369.742 282.186V285.659C369.742 288.056 367.798 290 365.401 290Z" fill="#7D5046"></path><path d="M365.401 277.844C365.103 277.844 364.813 277.875 364.532 277.932V283.922C364.532 285.361 365.699 286.527 367.137 286.527C368.576 286.527 369.742 285.361 369.742 283.922V282.186C369.742 279.788 367.798 277.844 365.401 277.844Z" fill="#9C6846"></path><path d="M354.981 336.019C325.25 336.019 301.148 311.917 301.148 282.186C301.148 269.31 305.673 257.496 313.213 248.232C301.085 258.103 293.333 273.144 293.333 290C293.333 319.731 317.435 343.833 347.167 343.833C364.023 343.833 379.064 336.081 388.935 323.953C379.671 331.493 367.857 336.019 354.981 336.019Z" fill="#FFD164"></path></svg>
+      </div>
+
+      <div className="stats-wrapper">
+        <div className="stats-container">
+          <div className="stat-left">0%</div>
+          <div className="stat-middle">
+            <div className="stat-percentage">97.78%</div>
+            <div className="stat-label">Based on Likes</div>
           </div>
-          <div
-            className=""
-            style={{
-              width: '150px',
-              textAlign: 'center',
-            }}
-          >
-            <div
-              className="font-bold"
-              style={{ color: '#2f49d1', fontSize: '18px' }}
-            >
-              97.78%
-            </div>
-            <div className="">Based on Likes</div>
-          </div>
-          <div className="" style={{ width: '50px' }}>
-            100%
-          </div>
+          <div className="stat-right">100%</div>
         </div>
       </div>
     </div>
@@ -822,55 +592,22 @@ function Satisfication() {
 function AddComponent() {
   return (
     <div>
-      <div className="w-full h-20 add-component-head" />
-      <div
-        className="flex flex-col items-center"
-        style={{
-          transform: 'translate(0, -40px)',
-        }}
-      >
-        <div
-          className=""
-          style={{
-            background: '#414455',
-            width: '80px',
-            height: '80px',
-            borderRadius: '999px',
-          }}
-        >
+      <div className="add-component-head"></div>
+      <div className="add-component-container">
+        <div className="add-component-icon">
           <img
             src="https://assets.codepen.io/3685267/res-react-dash-rocket.svg"
             alt=""
-            className="w-full h-full"
+            className="full-size"
           />
         </div>
-        <div className="text-white font-bold mt-3">
-          No Components Created Yet
-        </div>
-        <div className="mt-2">Simply create your first component</div>
-        <div className="mt-1">Just click on the button</div>
-        <div
-          className="flex items-center p-3 mt-3"
-          style={{
-            background: '#2f49d1',
-            borderRadius: '15px',
-            padding: '8px 16px',
-            justifyContent: 'center',
-            color: 'white',
-          }}
-        >
-          <Icon path="res-react-dash-add-component" className="w-5 h-5" />
-          <div className="ml-2">Add Component</div>
-          <div
-            className="ml-2"
-            style={{
-              background: '#4964ed',
-              borderRadius: '15px',
-              padding: '4px 8px 4px 8px',
-            }}
-          >
-            129
-          </div>
+        <div className="component-text">No Components Created Yet</div>
+        <div className="sub-text">Simply create your first component</div>
+        <div className="sub-text">Just click on the button</div>
+        <div className="add-button">
+          <Icon path="res-react-dash-add-component" className="icon-small" />
+          <div className="button-text">Add Component</div>
+          <div className="badge">129</div>
         </div>
       </div>
     </div>
@@ -881,8 +618,9 @@ function SidebarIcons({ id }) {
   const icons = {
     0: (
       <>
-        <path d="M12 19C10.067 19 8.31704 18.2165 7.05029 16.9498L12 12V5C15.866 5 19 8.13401 19 12C19 15.866 15.866 19 12 19Z" />
+        <path  className="icon" d="M12 19C10.067 19 8.31704 18.2165 7.05029 16.9498L12 12V5C15.866 5 19 8.13401 19 12C19 15.866 15.866 19 12 19Z" />
         <path
+        className="icon"
           fillRule="evenodd"
           clipRule="evenodd"
           d="M23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
@@ -931,7 +669,7 @@ function SidebarIcons({ id }) {
   };
   return (
     <svg
-      className="w-8 h-8 xl:w-5 xl:h-5"
+      className="sidebar-icon-image"
       viewBox="0 0 24 24"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
@@ -941,40 +679,37 @@ function SidebarIcons({ id }) {
   );
 }
 
-function Icon({ path = 'options', className = 'w-4 h-4' }) {
+function Icon({ path = 'options', className = 'icon-small' }) {
   return (
     <img
       src={`https://assets.codepen.io/3685267/${path}.svg`}
       alt=""
-      className={clsx(className)}
+      className={className}
     />
   );
 }
 
-function IconButton({
-  onClick = () => {},
-  icon = 'options',
-  className = 'w-4 h-4',
-}) {
+function IconButton({ onClick = () => {}, icon = 'options', className = 'icon-button' }) {
   return (
     <button onClick={onClick} type="button" className={className}>
       <img
         src={`https://assets.codepen.io/3685267/${icon}.svg`}
         alt=""
-        className="w-full h-full"
+        className="icon-image"
       />
     </button>
   );
 }
 
-function Image({ path = '1', className = 'w-4 h-4' }) {
+function Image({ path = '1', className = 'image-small' }) {
   return (
     <img
       src={`https://assets.codepen.io/3685267/${path}.jpg`}
       alt=""
-      className={clsx(className, 'rounded-full')}
+      className={className}
     />
   );
 }
+
 
 export {Dashboard, Sidebar, SidebarIcons, MenuItem, Content, NameCard, Graph, TopCountries, Segmentation, Satisfication, AddComponent, Icon, IconButton, Image};
