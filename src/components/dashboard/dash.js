@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from "recharts";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import "./dash.css";
@@ -53,8 +54,8 @@ const segmentationData = [
 const sidebarItems = [
   [
     { id: '0', title: 'Dashboard', notifications: false },
-    { id: '1', title: 'Overview', notifications: false },
-    { id: '2', title: 'Chat', notifications: 6 },
+    { id: '1', title: 'Inventory', notifications: false },
+    { id: '2', title: 'Flags', notifications: 6 },
     { id: '3', title: 'Team', notifications: false },
   ],
   [
@@ -105,6 +106,7 @@ const Dashboard = () => {
 }
 
 function Sidebar({ onSidebarHide, showSidebar }) {
+  const navigate = useNavigate();
   const [selected, setSelected] = useState('0');
   const { dashOffset, indicatorWidth, precentage } = useSpring({
     dashOffset: 26.015,
@@ -113,6 +115,7 @@ function Sidebar({ onSidebarHide, showSidebar }) {
     from: { dashOffset: 113.113, indicatorWidth: 0, precentage: 0 },
     config: config.molasses,
   });
+
   return (
     <div className={`sidebar ${showSidebar ? 'show' : 'hide'}`}>
       <div className="flex-container">
@@ -150,7 +153,10 @@ function Sidebar({ onSidebarHide, showSidebar }) {
     <MenuItem
       key={i.id}
       item={i}
-      onClick={setSelected}
+      onClick={()=>{
+        setSelected(i.id)
+        navigate(i.path)
+      }}
       selected={selected}
     />
   ))}
@@ -426,19 +432,24 @@ function NameCard({ name, position, transactionAmount, rise, tasksCompleted, img
 }
 
 function Graph() {
-  const CustomTooltip = (props) => (
-    <div className="tooltip-container">
-      <div className="tooltip-header">
-        <div>Revenue</div>
-        <Icon path="res-react-dash-options" className="icon-small" />
-      </div>
-      <div className="tooltip-body">
-        <div className="tooltip-value">$1300.50</div>
-        <div>Revenue from 230 sales</div>
-      </div>
-    </div>
-  );
-
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload; // Access the data point
+      return (
+        <div className="tooltip-container">
+          <div className="tooltip-header">
+            <div>Revenue</div>
+            <Icon path="res-react-dash-options" className="icon-small" />
+          </div>
+          <div className="tooltip-body">
+            <div className="tooltip-value">${data.revenue.toFixed(2)}</div>
+            <div>Revenue from {data.sales} sales</div>
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
   return (
     <div className="graph-container" style={{width:"96%"}}>
       <div className="graph-header">
@@ -634,8 +645,8 @@ function SidebarIcons({ id }) {
     ),
     2: (
       <>
-        <path d="M2 4V18L6.8 14.4C7.14582 14.1396 7.56713 13.9992 8 14H16C17.1046 14 18 13.1046 18 12V4C18 2.89543 17.1046 2 16 2H4C2.89543 2 2 2.89543 2 4ZM4 14V4H16V12H7.334C6.90107 11.9988 6.47964 12.1393 6.134 12.4L4 14Z" />
-        <path d="M22 22V9C22 7.89543 21.1046 7 20 7V18L17.866 16.4C17.5204 16.1393 17.0989 15.9988 16.666 16H7C7 17.1046 7.89543 18 9 18H16C16.4329 17.9992 16.8542 18.1396 17.2 18.4L22 22Z" />
+        <path d="M21.266 20.998H2.73301C2.37575 20.998 2.04563 20.8074 1.867 20.498C1.68837 20.1886 1.68838 19.8074 1.86701 19.498L11.133 3.49799C11.3118 3.1891 11.6416 2.9989 11.9985 2.9989C12.3554 2.9989 12.6852 3.1891 12.864 3.49799L22.13 19.498C22.3085 19.8072 22.3086 20.1882 22.1303 20.4975C21.9519 20.8069 21.6221 20.9976 21.265 20.998H21.266ZM12 5.99799L4.46901 18.998H19.533L12 5.99799ZM12.995 14.999H10.995V9.99799H12.995V14.999Z" />
+        <path d="M11 16H13V18H11V16Z" />
       </>
     ),
     3: (
