@@ -1,65 +1,87 @@
 /* Styling for the table container */
 .orders-container {
-    padding: 20px;
-    margin-left: 250px;
-    width: calc(100% - 300px);
+  padding: 20px;
+  margin-left: 250px;
+  width: calc(100% - 300px);
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollable table wrapper */
+.scrollable-table {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-y: auto;
+  max-height: 610px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+}
+
+/* Table styles */
+.unique-active-orders-table {
+  width: 100%;
+  min-width: 600px; /* Prevents table from shrinking too much */
+  border-collapse: collapse;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  color: #ffffff;
+  background-color: #1e1e1e;
+}
+
+/* Table Header styles */
+.unique-active-orders-table th {
+  padding: 12px 15px;
+  background-color: #2f49d0;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Table Row and Cell styles */
+.unique-active-orders-table td {
+  padding: 15px;
+  border: 2px solid #ddd;
+  background-color: #1e1e1e;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect for rows */
+.unique-active-orders-table tr:hover {
+  background-color: #2a2a2a;
+}
+
+/* Empty state styling */
+.unique-active-orders-table td[colspan="10"] {
+  text-align: center;
+  font-style: italic;
+  color: #bbb;
+}
+
+/* Striped effect for rows */
+.unique-active-orders-table tr:nth-child(odd) td {
+  background-color: #252525;
+}
+
+.unique-active-orders-table tr:nth-child(even) td {
+  background-color: #1e1e1e;
+}
+
+/* Responsive Design */
+@media (max-width: 1280px) {
+  .orders-container{
+    margin-left: 9%;
   }
-  
-  /* Scrollable table wrapper */
-  .scrollable-table {
-    width: 100%;
-    overflow-y: auto;
-    max-height: 610px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+}
+@media (max-width: 640px) {
+  .orders-container{
+    margin-left: 0;
+    width: 93%;
   }
-  
-  /* Table styles */
-  .unique-active-orders-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Arial', sans-serif;
-    text-align: left;
-  }
-  
-  /* Table Header styles */
-  .unique-active-orders-table th {
-    padding: 12px 15px;
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-    border: 1px solid #ddd;
-    position: sticky;
-    top: 0; /* Keeps the header fixed at the top */
-    z-index: 1; /* Ensures that the header stays on top of table content */
-  }
-  
-  /* Table Row and Cell styles */
-  .unique-active-orders-table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    transition: background-color 0.3s;
-  }
-  
-  /* Hover effect for rows */
-  .unique-active-orders-table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  /* Empty state styling */
-  .unique-active-orders-table td[colspan="10"] {
-    text-align: center;
-    font-style: italic;
-    color: #999;
-  }
-  
-  /* Optional: Add striped effect to rows for better readability */
-  .unique-active-orders-table tr:nth-child(odd) td {
-    background-color: #f1f1f1;
-  }
-  
-  .unique-active-orders-table tr:nth-child(even) td {
-    background-color: #ffffff;
-  }
-  
+}
