@@ -225,14 +225,6 @@ background: #1d1d1d;
   height: 20px;
 }
 
-.sidebar-shortcuts-title {
-  font-weight: bold;
-  font-size: 1rem;
-  color: white;
-  margin-top: 32px;
-  margin-left: 10px;
-}
-
 .sidebar-footer {
   width: 80%;
   padding: 16px;
@@ -242,10 +234,6 @@ background: #1d1d1d;
 @media screen and (max-width: 1270px) {
   .sidebar-header, .react-text {
     display: none;
-  }
-  .sidebar-shortcuts-title{
-    font-size: 0.7rem;
-    margin-left: 5px;
   }
   .sidebar-footer-content{
     padding-left: 5px !important;
@@ -365,8 +353,8 @@ background: #1d1d1d;
   }
 }
 .sidebar-icon-image{
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 /* Main container */
 .menu-item {
@@ -553,13 +541,14 @@ background: #1d1d1d;
 /* Sidebar Toggle Button */
 .sidebar-toggle {
   display: none;
-}
-
-@media screen and (max-width: 640px) {
-  .sidebar-toggle {
-    display: block;
-  }
-  
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 15px;  /* Adjust as needed */
+  right: 15px; /* Ensures it's at the right corner */
+  z-index: 1000; /* Keeps it above other elements */
+  cursor: pointer;
 }
 
 /* Search Bar */
@@ -1080,8 +1069,8 @@ background: #1d1d1d;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24px;  /* Equivalent to w-4 in Tailwind */
-  height: 24px; /* Equivalent to h-4 in Tailwind */
+  width: 40px;  /* Equivalent to w-4 in Tailwind */
+  height: 40px; /* Equivalent to h-4 in Tailwind */
 }
 
 /* Icon Image */

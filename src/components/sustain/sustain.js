@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"; 
 import "./sustain.css"; // Ensure you have a corresponding CSS file
 
 const customers = [
@@ -24,6 +24,18 @@ const customers = [
       { id: 104, item: "T-shirt", recyclable: true },
       { id: 105, item: "Jeans", recyclable: false }
     ]
+  },
+  {
+    id: 3,
+    name: "Jane Smith",
+    email: "jane@example.com",
+    sustainabilityScore: 2,
+    orders: [
+      { id: 104, item: "T-shirt", recyclable: true },
+      { id: 105, item: "Jeans", recyclable: false },
+      { id: 104, item: "T-shirt", recyclable: true },
+      { id: 105, item: "Jeans", recyclable: false }
+    ]
   }
 ];
 
@@ -38,9 +50,9 @@ const CustomerOrders = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ overflowY: "scroll", maxHeight: "80vh" }}>
       <h2>Customer Orders & Sustainability</h2>
-      <table className="customer-table">
+      <table className="customer-table" style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
           <tr>
             <th>Customer</th>
@@ -65,9 +77,18 @@ const CustomerOrders = () => {
               {expandedRows[customer.id] && (
                 <tr>
                   <td colSpan={4}>
-                    <div className="order-history">
+                    <div 
+                      className="order-history" 
+                      style={{
+                        maxHeight: '300px', 
+                        overflowY: 'auto', 
+                        border: '1px solid #ddd',
+                        padding: '10px',
+                        marginTop: '10px'
+                      }}
+                    >
                       <h3>Order History</h3>
-                      <table className="order-table">
+                      <table className="order-table" style={{ width: "100%", borderCollapse: "collapse" }}>
                         <thead>
                           <tr>
                             <th>Order ID</th>
@@ -97,4 +118,4 @@ const CustomerOrders = () => {
   );
 }
 
-export {CustomerOrders};
+export { CustomerOrders };
