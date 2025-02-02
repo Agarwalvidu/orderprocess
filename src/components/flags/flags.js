@@ -30,7 +30,7 @@ const FlaggedOrders = () => {
   return (
     <div className="flags-container">
       <h2>Flagged Orders</h2>
-      <div className="scrollable-table">
+      <div className="scrollable-flags-table">
         <table className="flagged-orders-table">
           <thead>
             <tr>

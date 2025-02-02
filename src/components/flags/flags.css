@@ -1,16 +1,3 @@
-/* Centering the entire page */
-body, html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1e1e1e;
-}
-
-h2{
-    color: #fff;
-}
 
 /* Centering the table container and shifting slightly to the right */
 .flags-container {
@@ -30,7 +17,7 @@ h2{
 }
 
 /* Centering the table */
-.scrollable-table {
+.scrollable-flags-table {
     display: flex;
     justify-content: center;
     width: 100%;
