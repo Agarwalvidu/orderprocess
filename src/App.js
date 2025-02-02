@@ -7,6 +7,7 @@ import Layout from "./components/dashboard/toggle";
 import OrdersTable from "./components/activeorder/activeorder";
 import {ReturnOrders} from "./components/return/return";
 import { FlaggedOrders } from "./components/flags/flags";
+import { AddItem } from "./components/add_items/add_items";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/orders" element={<OrdersTable />} />
       <Route path="/flags" element={<FlaggedOrders />} />
       <Route path="/return" element={<ReturnOrders/>} />
+      <Route path="/add-item" element={<AddItem/>} />
     </Routes>
     </Layout>
   </BrowserRouter>

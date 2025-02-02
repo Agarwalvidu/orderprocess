@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./inventory.css";
 
 const Inventory = () => {
+
   const products = [
     {
       name: "Matte Lipstick",
@@ -101,6 +102,7 @@ const Inventory = () => {
       ]),
     },
   ];
+
 
   return (
     <div className="orders-container">

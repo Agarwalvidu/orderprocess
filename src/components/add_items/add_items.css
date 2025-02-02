@@ -1,0 +1,116 @@
+.add-inventory-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1e1e1e;
+    margin-left: 180px;
+  }
+
+  .add-inventory-form {
+    width: 420px;
+    color: #fff;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    max-height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+  }
+
+.add-inventory-form input,
+.add-inventory-form select {
+    width: 95%; 
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background: #fff; 
+    color: #000 !important; 
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+  .add-inventory-form::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .add-inventory-form h2 {
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  
+
+  .add-inventory-form label {
+    display: block;
+    text-align: center;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .add-inventory-form input,
+  .add-inventory-form select {
+    width: 95%; 
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background: #fff;
+    color: #fff;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  .add-inventory-form select {
+    cursor: pointer;
+  }
+  
+  .add-inventory-form button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+  }
+  
+  .add-inventory-form button:hover {
+    background: #0056b3;
+  }
+  
+  .variants-list {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .variants-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .variants-list li {
+    background: #1e1e1e;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  /* Responsive */
+  @media (max-width: 500px) {
+    .add-inventory-form {
+      width: 90%;
+    }
+  }
+  

@@ -1,7 +1,7 @@
-﻿CustomerID,CustomerName,OrderID,Product ID,Variant,Quantity,DateOfOrder,Address,Flag Reason
-1,Namita Bhatt,101,109,Medium,1,"Sat, 1 Feb 2025 00:47:34 +0530",,Missing Address
-2,Anu Mayer,102,105,Blue,a,"Sat, 1 Feb 2025 00:47:34 +0531",xyz road,Wrong Quantity
-3,Riya Singh,103,105,Black,3,"Sat, 1 Feb 2025 00:47:34 +0532",yamuna nagar,Incomplete Address
-4,Jiya Maggo,104,101,Berry,1,"Sat, 1 Feb 2025 00:47:34 +0533",,Missing Address
-5,Kajal Kumari,105,103,Deep,2,"Sat, 1 Feb 2025 00:47:34 +0534",tilak nagar,Incomplete Address
-1,Namita Bhatt,101,109,Medium,1,"Sat, 1 Feb 2025 00:47:34 +0530",,Duplicate Order
+﻿CustomerID,CustomerName,Customer Email,OrderID,Product ID,Variant,Quantity,DateOfOrder,Address,Flag Reason
+C052,Namita Bhatt,customerC052@gmail.com,1001,109,Medium,1,"Sat, 1 Feb 2025 00:47:34 +0530",,Missing Address
+C021,Anu Mayer,customerC021@gmail.com,1023,105,Blue,a,"Sat, 1 Feb 2025 00:47:34 +0531",xyz road,Wrong Quantity
+C035,Riya Singh,customerC035@gmail.com,1118,105,Black,3,"Sat, 1 Feb 2025 00:47:34 +0532",yamuna nagar,Incomplete Address
+"C028	",Jiya Maggo,customerC028@gmail.com,1173,101,Berry,1,"Sat, 1 Feb 2025 00:47:34 +0533",,Missing Address
+C019,Kajal Kumari,customerC019@gmail.com,1230,103,Deep,2,"Sat, 1 Feb 2025 00:47:34 +0534",tilak nagar,Incomplete Address
+C052,Namita Bhatt,customerC052@gmail.com,1001,109,Medium,1,"Sat, 1 Feb 2025 00:47:34 +0530",,Duplicate Order
