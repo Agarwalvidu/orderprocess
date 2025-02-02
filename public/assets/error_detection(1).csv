@@ -1,0 +1,7 @@
+﻿CustomerID,CustomerName,OrderID,Product ID,Variant,Quantity,DateOfOrder,Address,Flag Reason
+1,Namita Bhatt,101,109,Medium,1,"Sat, 1 Feb 2025 00:47:34 +0530",,Missing Address
+2,Anu Mayer,102,105,Blue,a,"Sat, 1 Feb 2025 00:47:34 +0531",xyz road,Wrong Quantity
+3,Riya Singh,103,105,Black,3,"Sat, 1 Feb 2025 00:47:34 +0532",yamuna nagar,Incomplete Address
+4,Jiya Maggo,104,101,Berry,1,"Sat, 1 Feb 2025 00:47:34 +0533",,Missing Address
+5,Kajal Kumari,105,103,Deep,2,"Sat, 1 Feb 2025 00:47:34 +0534",tilak nagar,Incomplete Address
+1,Namita Bhatt,101,109,Medium,1,"Sat, 1 Feb 2025 00:47:34 +0530",,Duplicate Order

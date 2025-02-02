@@ -5,6 +5,7 @@ import { CustomerOrders } from "./components/sustain/sustain";
 import { Inventory } from "./components/Inventory/inventory";
 import Layout from "./components/dashboard/toggle";
 import OrdersTable from "./components/activeorder/activeorder";
+import { FlaggedOrders } from "./components/flags/flags";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/sustain" element={<CustomerOrders />} />
       <Route path="/inventory" element={<Inventory />} />
       <Route path="/orders" element={<OrdersTable />} />
+      <Route path="/flags" element={<FlaggedOrders />} />
     </Routes>
     </Layout>
   </BrowserRouter>
