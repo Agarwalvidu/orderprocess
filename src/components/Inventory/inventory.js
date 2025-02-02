@@ -103,21 +103,21 @@ const Inventory = () => {
   ];
 
   return (
-      <div className="container">
-        <table className="responsive-table">
+    <div className="orders-container">
+      <h2>Inventory</h2>
+      <div className="scrollable-table">
+        <table className="unique-active-orders-table">
           <thead>
             <tr>
-              <th colSpan="7" className="title">
-                Inventory
-              </th>
+              <th colSpan="7">Inventory</th>
             </tr>
             <tr>
               <th>Name</th>
               <th>Product ID</th>
-              <th>Price Per Unit(in $)</th>
+              <th>Price Per Unit (in $)</th>
               <th>Quantity in Inventory</th>
-              <th>Expiry(in months)</th>
-              <th>Sustainable(Green/Non-green)</th>
+              <th>Expiry (in months)</th>
+              <th>Sustainable (Green/Non-green)</th>
               <th>Variants</th>
             </tr>
           </thead>
@@ -128,14 +128,13 @@ const Inventory = () => {
           </tbody>
         </table>
       </div>
+    </div>
   );
 };
 
 const ProductRow = ({ product }) => {
   const [showVariants, setShowVariants] = useState(false);
   const [quantity, setQuantity] = useState(product.quantity);
-
-  // Safe handling of variants
   const [variants, setVariants] = useState(
     product.variants ? JSON.parse(product.variants) : []
   );
@@ -148,7 +147,7 @@ const ProductRow = ({ product }) => {
   const handleVariantQuantityChange = (index, e) => {
     const updatedVariants = [...variants];
     updatedVariants[index].stock = Math.max(0, parseInt(e.target.value) || 0);
-    setVariants(updatedVariants); 
+    setVariants(updatedVariants);
   };
 
   return (
@@ -180,7 +179,7 @@ const ProductRow = ({ product }) => {
       {showVariants && variants.length > 0 && (
         <tr>
           <td colSpan="7">
-            <table className="nested-table">
+            <table className="unique-active-orders-table">
               <thead>
                 <tr>
                   <th>Variant Name</th>
@@ -213,5 +212,6 @@ const ProductRow = ({ product }) => {
     </>
   );
 };
+
 
 export {Inventory};
