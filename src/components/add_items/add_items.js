@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./add_items.css";
 
-
-const AddItem = ({ addProduct }) => {
+const AddItem = () => {
   const [product, setProduct] = useState({
     name: "",
     product_id: "",
@@ -31,6 +30,11 @@ const AddItem = ({ addProduct }) => {
     }
   };
 
+  const addProduct = (productData) => {
+    // Your logic to handle adding the product
+    console.log("Product added:", productData);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addProduct({ ...product, variants: JSON.stringify(variants) });
@@ -44,6 +48,8 @@ const AddItem = ({ addProduct }) => {
       variants: [],
     });
     setVariants([]);
+    window.alert("New item added to the inventory!");
+    window.location.href = "/inventory";
   };
 
   return (
@@ -104,4 +110,4 @@ const AddItem = ({ addProduct }) => {
   );
 };
 
-export {AddItem};
+export { AddItem };
