@@ -18,7 +18,7 @@ function App() {
       <Route path="/inventory" element={<Inventory />} />
       <Route path="/orders" element={<OrdersTable />} />
       <Route path="/flags" element={<FlaggedOrders />} />
-      <Route path="/returns" element={<ReturnOrders/>} />
+      <Route path="/return" element={<ReturnOrders/>} />
     </Routes>
     </Layout>
   </BrowserRouter>
