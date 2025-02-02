@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
-import './flags.css'; // Import the CSS file
 
 const FlaggedOrders = () => {
   const [flaggedOrders, setFlaggedOrders] = useState([]);
@@ -28,10 +27,10 @@ const FlaggedOrders = () => {
   }, []);
 
   return (
-    <div className="flags-container">
+    <div className="orders-container">
       <h2>Flagged Orders</h2>
-      <div className="scrollable-flags-table">
-        <table className="flagged-orders-table">
+      <div className="scrollable-table">
+        <table className="unique-active-orders-table">
           <thead>
             <tr>
               <th>Order ID</th>
