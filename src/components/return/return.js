@@ -117,4 +117,4 @@ const ReturnOrders = () => {
   );
 };
 
-export default ReturnOrders;
+export {ReturnOrders};
