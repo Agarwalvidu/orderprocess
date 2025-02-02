@@ -106,13 +106,12 @@ const Inventory = () => {
 
   return (
     <div className="orders-container">
+      <hr className='lines'/>
       <h2>Inventory</h2>
+      <hr className='lines' style={{marginBottom:"20px"}}/>
       <div className="scrollable-table">
         <table className="unique-active-orders-table">
           <thead>
-            <tr>
-              <th colSpan="7">Inventory</th>
-            </tr>
             <tr>
               <th>Name</th>
               <th>Product ID</th>

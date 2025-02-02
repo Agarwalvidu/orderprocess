@@ -96,7 +96,9 @@
 .ack-dropdown {
   width: 100%;
 }
-
+.lines{
+  display: none;
+}
 
 /* Responsive Design */
 @media (max-width: 1280px) {
@@ -109,5 +111,11 @@
     margin-left: 20px;
     width: 93%;
     padding: 0;
+  }
+  .scrollable-table{
+    max-height: 780px;
+  }
+  .lines{
+    display: block;
   }
 }

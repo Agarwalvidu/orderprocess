@@ -28,7 +28,9 @@ const FlaggedOrders = () => {
 
   return (
     <div className="orders-container">
+      <hr className='lines'/>
       <h2>Flagged Orders</h2>
+      <hr className='lines' style={{marginBottom:"20px"}}/>
       <div className="scrollable-table">
         <table className="unique-active-orders-table">
           <thead>
