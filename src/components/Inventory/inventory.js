@@ -1,153 +1,124 @@
-import React from "react";
+import React, { useState } from "react";
 
-export const Inventory = () => {
-  const movies = [
+const Inventory = () => {
+  const products = [
     {
-      title: "Inside Out 2",
-      released: 2024,
-      studio: "Disney Pixar",
-      worldwideGross: "$1,698,863,816",
-      domesticGross: "$652,980,194",
-      internationalGross: "$1,045,883,622",
-      budget: "$200,000,000",
+      name: "Matte Lipstick",
+      product_id: 101,
+      price: "12.99",
+      quantity: 150,
+      expiry: "24",
+      green: "Yes",
+      variants: JSON.stringify([
+        { name: "Red", sku: "LIP-RED", price: "12.99", stock: 50 },
+        { name: "Nude", sku: "LIP-NUDE", price: "12.99", stock: 20 },
+        { name: "Berry", sku: "LIP-BERRY", price: "12.99", stock: 80}
+      ])
     },
     {
-      title: "The Lion King (2019 remake)",
-      released: 2019,
-      studio: "Disney",
-      worldwideGross: "$1,662,020,819",
-      domesticGross: "$543,638,043",
-      internationalGross: "$1,118,382,776",
-      budget: "$260,000,000",
+      name: "Foundation",
+      product_id: 102,
+      price: "19.99",
+      quantity: 300,
+      expiry: "18",
+      green: "No",
+      variants: JSON.stringify([
+        { name: "Light", sku: "FD-LIGHT", price: "19.99", stock: 199},
+        { name: "Medium", sku: "FD-MEDIUM", price: "19.99", stock: 90},
+        {name: "Dark", sku: "FD-DARK", price: "19.99", stock: 109}
+      ])
     },
     {
-      title : "Frozen II",
-      
-      released: 2019,
-      studio: "Disney",
-      worldwideGross: "$1,453,683,476",
-      domesticGross: "$477,373,578",
-      internationalGross: "$976,309,898",
-      budget: "$150,000,000",
+      name: "Compact Powder",
+      product_id: 103,
+      price: "15.5",
+      quantity: 400,
+      expiry: "36",
+      green: "Yes",
+      variants: JSON.stringify([
+        { name: "Light", sku: "FD-LIGHT", price: "15.5", stock: 200 },
+        { name: "Medium", sku: "FD-MEDIUM", price: "15.5", stock: 89 },
+        { name: "Deep", sku: "FD-DEEP", price: "15.5", stock: 111 }
+      ])
     },
     {
-      title: "The Super Mario Bros. Movie",
-      released: 2023,
-      studio: "Universal",
-      worldwideGross: "$1,360,847,665",
-      domesticGross: "$574,934,330",
-      internationalGross: "$785,913,335",
-      budget: "$100,000,000",
+      name: "Waterproof Mascara",
+      product_id: 104,
+      price: "14.99",
+      quantity: 350,
+      expiry: "12",
+      green: "No"
     },
     {
-      title: "Frozen",
-      released: 2013,
-      studio: "Disney",
-      worldwideGross: "$1,281,019,275",
-      domesticGross: "$400,953,009",
-      internationalGross: "$880,066,266",
-      budget: "$150,000,000",
+      name: "Gel Eyeliner",
+      product_id: 105,
+      price: "9.99",
+      quantity: 600,
+      expiry: "24",
+      green: "Yes",
+      variants: JSON.stringify([
+        { name: "Black", sku: "EL-BLACK", price: "9.99", stock: 150 },
+        { name: "Brown", sku: "EL-BROWN", price: "9.99", stock: 270},
+        { name: "Blue", sku: "EL-BLUE", price: "9.99", stock: 180 }
+      ])
     },
     {
-      title: "Incredibles 2",
-      released: 2018,
-      studio: "Disney Pixar",
-      worldwideGross: "$1,243,089,244",
-      domesticGross: "$608,581,744",
-      internationalGross: "$634,507,500",
-      budget: "$200,000,000",
+      name: "Blush Palette",
+      product_id: 106,
+      price: "22",
+      quantity: 250,
+      expiry: "12",
+      green: "Yes"
     },
     {
-      title: "Minions",
-      released: 2015,
-      studio: "Universal",
-      worldwideGross: "$1,159,444,662",
-      domesticGross: "$336,045,770",
-      internationalGross: "$823,398,892",
-      budget: "$74,000,000",
+      name: "Highlighter Stick",
+      product_id: 107,
+      price: "13.75",
+      quantity: 500,
+      expiry: "24",
+      green: "No"
     },
     {
-      title: "Toy Story 4",
-      released: 2019,
-      studio: "Disney Pixar",
-      worldwideGross: "$1,073,394,593",
-      domesticGross: "$434,038,008",
-      internationalGross: "$639,356,585",
-      budget: "$200,000,000",
+      name: "Setting Spray",
+      product_id: 108,
+      price: "17.99",
+      quantity: 300,
+      expiry: "12",
+      green: "Yes"
     },
     {
-      title: "Toy Story 3",
-      released: 2010,
-      studio: "Disney Pixar",
-      worldwideGross: "$1,066,970,811",
-      domesticGross: "$415,004,880",
-      internationalGross: "$651,965,931",
-      budget: "$200,000,000",
-    },
-    {
-      title: "Despicable Me 3",
-      released: 2017,
-      studio: "Universal",
-      worldwideGross: "$1,034,800,131",
-      domesticGross: "$264,624,300",
-      internationalGross: "$770,175,831",
-      budget: "$80,000,000",
+      name: "BB Cream",
+      product_id: 109,
+      price: "16.50",
+      quantity: 400,
+      expiry: "12",
+      green: "No",
+      variants: JSON.stringify([
+        { name: "Light", sku: "BB-LIGHT", price: "16.50", stock: 175},
+        { name: "Medium", sku: "BB-MEDIUM", price: "16.50", stock: 100},
+        { name: "Dark", sku: "BB-DARK", price: "16.50", stock: 125}
+      ])
     },
   ];
 
   return (
     <div className="container">
       <table className="responsive-table">
-        <caption>Top 10 Grossing Animated Films of All Time</caption>
+        <caption>Beauty Product Inventory</caption>
         <thead>
           <tr>
-            <th scope="col">Film Title</th>
-            <th scope="col">Released</th>
-            <th scope="col">Studio</th>
-            <th scope="col">Worldwide Gross</th>
-            <th scope="col">Domestic Gross</th>
-            <th scope="col">International Gross</th>
-            <th scope="col">Budget</th>
+            <th>Name</th>
+            <th>Product ID</th>
+            <th>Price Per Unit(in $)</th>
+            <th>Quantity in Inventory</th>
+            <th>Expiry(in months)</th>
+            <th>Sustainable(Green/Non-green)</th>
+            <th>Variants</th>
           </tr>
         </thead>
-        <tfoot>
-          <tr>
-            <td colSpan="7">
-              Sources:{" "}
-              <a
-                href="http://en.wikipedia.org/wiki/List_of_highest-grossing_animated_films"
-                rel="external"
-              >
-                Wikipedia
-              </a>{" "}
-              &amp;{" "}
-              <a
-                href="http://www.boxofficemojo.com/genres/chart/?id=animation.htm"
-                rel="external"
-              >
-                Box Office Mojo
-              </a>
-              . Data is current as of January 17, 2025.
-            </td>
-          </tr>
-        </tfoot>
         <tbody>
-          {movies.map((movie, index) => (
-            <tr key={index}>
-              <th scope="row">{movie.title}</th>
-              <td data-title="Released">{movie.released}</td>
-              <td data-title="Studio">{movie.studio}</td>
-              <td data-title="Worldwide Gross" data-type="currency">
-                {movie.worldwideGross}
-              </td>
-              <td data-title="Domestic Gross" data-type="currency">
-                {movie.domesticGross}
-              </td>
-              <td data-title="International Gross" data-type="currency">
-                {movie.internationalGross}
-              </td>
-              <td data-title="Budget" data-type="currency">{movie.budget}</td>
-            </tr>
+          {products.map((product, index) => (
+            <ProductRow key={index} product={product} />
           ))}
         </tbody>
       </table>
@@ -155,3 +126,61 @@ export const Inventory = () => {
   );
 };
 
+const ProductRow = ({ product }) => {
+  const [showVariants, setShowVariants] = useState(false);
+  const [quantity, setQuantity] = useState(product.quantity || 0);
+
+  const handleIncrease = () => setQuantity((prev) => prev + 1);
+  const handleDecrease = () => setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
+  const handleChange = (e) => setQuantity(Number(e.target.value));
+
+  return (
+    <>
+      <tr>
+        <td>{product.name}</td>
+        <td>{product.product_id}</td>
+        <td>{product.price}</td>
+        <td>
+          <button onClick={handleDecrease}>-</button>
+          <input type="number" value={quantity} onChange={handleChange} />
+          <button onClick={handleIncrease}>+</button>
+        </td>
+        <td>{product.expiry}</td>
+        <td>{product.green}</td>
+        <td>
+          <button onClick={() => setShowVariants(!showVariants)}>
+            {showVariants ? "Hide Variants" : "Show Variants"}
+          </button>
+        </td>
+      </tr>
+      {showVariants && product.variants && (
+        <tr>
+          <td colSpan="7">
+            <table className="nested-table">
+              <thead>
+                <tr>
+                  <th>Variant Name</th>
+                  <th>SKU</th>
+                  <th>Price Per Unit</th>
+                  <th>Quantity in Inventory</th>
+                </tr>
+              </thead>
+              <tbody>
+                {JSON.parse(product.variants).map((variant, idx) => (
+                  <tr key={idx}>
+                    <td>{variant.name}</td>
+                    <td>{variant.sku}</td>
+                    <td>{variant.price}</td>
+                    <td>{variant.stock}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      )}
+    </>
+  );
+};
+
+export default Inventory;
