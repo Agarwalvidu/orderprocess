@@ -18,7 +18,7 @@ const sidebarItems = [
       { id: '0', title: 'Dashboard', notifications: false, path:'/' },
       { id: '1', title: 'Inventory', notifications: false, path:'/inventory' },
       { id: '2', title: 'Flags', notifications: 6, path:'/flags' },
-      { id: '3', title: 'Returns', notifications: false, path:'/returns' },
+      { id: '3', title: 'Returns', notifications: false, path:'/return' },
     ],
     [
       { id: '4', title: 'Add New Inventory', notifications: false ,path:'/add-item'},
