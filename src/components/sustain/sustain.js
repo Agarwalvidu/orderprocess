@@ -8,9 +8,9 @@ const customers = [
     email: "john@example.com",
     sustainabilityScore: 3,
     orders: [
-      { id: 101, item: "Shirt", recyclable: true },
-      { id: 102, item: "Jeans", recyclable: false },
-      { id: 103, item: "Shoes", recyclable: true }
+      { id: 101, item: "Matte Lipstick", recyclable: true },
+      { id: 102, item: "BB Cream", recyclable: false },
+      { id: 103, item: "Matte Lipstick", recyclable: true }
     ]
   },
   {
@@ -19,8 +19,8 @@ const customers = [
     email: "jane@example.com",
     sustainabilityScore: 2,
     orders: [
-      { id: 104, item: "T-shirt", recyclable: true },
-      { id: 105, item: "Jeans", recyclable: false }
+      { id: 104, item: "Gel Eyeliner", recyclable: true },
+      { id: 105, item: "Waterproof Mascara", recyclable: false }
     ]
   }
 ];
@@ -37,7 +37,7 @@ const CustomerOrders = () => {
 
   return (
     <div className="orders-container"> 
-      <h2>Customer Orders & Sustainability</h2>
+      <h2>Customer Orders & Sustainability Score</h2>
       <div className="scrollable-table">
         <table className="unique-active-orders-table">
           <thead>
