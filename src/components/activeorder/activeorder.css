@@ -81,7 +81,8 @@
 }
 @media (max-width: 640px) {
   .orders-container{
-    margin-left: 0;
+    margin-left: 20px;
     width: 93%;
+    padding: 0;
   }
 }
