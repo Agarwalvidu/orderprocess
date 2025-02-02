@@ -19,9 +19,9 @@ const sidebarItems = [
       { id: '1', title: 'Inventory', notifications: false, path:'/inventory' },
       { id: '2', title: 'Flags', notifications: 6, path:'/flags' },
       { id: '3', title: 'Sustain', notifications: false, path:'sustain' },
+      { id: '4', title: 'Returns', notifications: false, path:'/return'},
     ],
     [
-      { id: '4', title: 'Tasks', notifications: false },
       { id: '5', title: 'Reports', notifications: false },
       { id: '6', title: 'Settings', notifications: false },
     ],
@@ -61,8 +61,7 @@ const sidebarItems = [
       <div className="sidebar-header-content">
         <Icon path="res-react-dash-sidebar-card" className="icon-size" />
         <div className="sidebar-header-text">
-          <div className="sidebar-title">Active Orders/ </div>
-          <div className="sidebar-subtitle">Returns</div>
+          <div className="sidebar-title">Active Orders </div>
         </div>
         <div className="sidebar-grow"></div>
         <Icon

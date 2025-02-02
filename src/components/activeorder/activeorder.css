@@ -72,6 +72,31 @@
 .unique-active-orders-table tr:nth-child(even) td {
   background-color: #1e1e1e;
 }
+/* Green for Accepted */
+.ack-dropdown.green {
+  background-color: #28a745;  /* Green for Accepted */
+  color: white;
+}
+
+/* Red for Rejected */
+.ack-dropdown.red {
+  background-color: #dc3545;  /* Red for Rejected */
+  color: white;
+}
+
+/* Ensure return status dropdown has consistent styling */
+.return-status-dropdown {
+  background-color: #f0f0f0;
+}
+
+.return-status-dropdown {
+  width: 100%;
+}
+
+.ack-dropdown {
+  width: 100%;
+}
+
 
 /* Responsive Design */
 @media (max-width: 1280px) {

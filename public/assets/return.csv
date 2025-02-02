@@ -1,0 +1,21 @@
+Order ID,Customer ID,Customer Email,PickUp Address,Customer Availability,Acknowledgement,Return Status
+2001,C052,customerC052@gmail.com,"528 Main St, City, Country",5:00-7:00,Accepted,In Process
+2002,C093,customerC093@gmail.com,"329 Oak St, City, Country",16:00-18:00,Rejected,
+2003,C015,customerC015@gmail.com,"822 Main St, City, Country",23:00-26:00,Accepted,Successfull
+2004,C072,customerC072@gmail.com,"100 Maple St, City, Country",3:00-6:00,Accepted,In Process
+2005,C061,customerC061@gmail.com,"855 Maple St, City, Country",7:00-10:00,Accepted,In Process
+2006,C021,customerC021@gmail.com,"749 Elm St, City, Country",22:00-26:00,Accepted,Successfull
+2007,C083,customerC083@gmail.com,"905 Pine St, City, Country",5:00-9:00,Rejected,
+2008,C087,customerC087@gmail.com,"274 Oak St, City, Country",25:00-28:00,Accepted,In Process
+2009,C075,customerC075@gmail.com,"28 Pine St, City, Country",5:00-8:00,Accepted,Successfull
+2010,C075,customerC075@gmail.com,"940 Maple St, City, Country",19:00-22:00,Accepted,In Process
+2011,C088,customerC088@gmail.com,"540 Main St, City, Country",2:00-4:00,Accepted,Successfull
+2012,C024,customerC024@gmail.com,"356 Maple St, City, Country",21:00-23:00,Rejected,
+2013,C003,customerC003@gmail.com,"252 Oak St, City, Country",25:00-28:00,Accepted,In Process
+2014,C022,customerC022@gmail.com,"227 Maple St, City, Country",23:00-25:00,Accepted,Successfull
+2015,C053,customerC053@gmail.com,"313 Main St, City, Country",8:00-12:00,Accepted,In Process
+2016,C002,customerC002@gmail.com,"118 Elm St, City, Country",18:00-20:00,Accepted,Successfull
+2017,C088,customerC088@gmail.com,"565 Pine St, City, Country",13:00-16:00,Accepted,In Process
+2018,C030,customerC030@gmail.com,"815 Maple St, City, Country",6:00-9:00,Accepted,Successfull
+2019,C038,customerC038@gmail.com,"586 Maple St, City, Country",5:00-7:00,Accepted,In Process
+2020,C002,customerC002@gmail.com,"677 Elm St, City, Country",10:00-13:00,Accepted,Successfull
