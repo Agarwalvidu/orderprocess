@@ -108,7 +108,7 @@ const sidebarItems = [
           <div className="sidebar-footer-text">
             <div className="sidebar-footer-title">Used Space</div>
             <div className="sidebar-footer-subtitle">
-              Admin updated 09:12 am November 08,2020
+              Admin updated 3:12 pm February 02,2025
             </div>
             <animated.div className="sidebar-footer-percentage">
               {precentage.interpolate((i) => `${Math.round(i)}%`)}
@@ -175,7 +175,7 @@ const sidebarItems = [
     <div className="sidebar-item-content">
       <Image path="mock_faces_8" className="image-size" />
       <div className="sidebar-item-text">
-         Clark Kent
+        Kabir Thapar
       </div>
       <div className="sidebar-item-grow"></div>
       <Icon
