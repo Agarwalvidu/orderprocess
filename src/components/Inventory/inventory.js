@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./inventory.css";
 
 const Inventory = () => {
   const products = [
@@ -12,8 +13,8 @@ const Inventory = () => {
       variants: JSON.stringify([
         { name: "Red", sku: "LIP-RED", price: "12.99", stock: 50 },
         { name: "Nude", sku: "LIP-NUDE", price: "12.99", stock: 20 },
-        { name: "Berry", sku: "LIP-BERRY", price: "12.99", stock: 80}
-      ])
+        { name: "Berry", sku: "LIP-BERRY", price: "12.99", stock: 80 },
+      ]),
     },
     {
       name: "Foundation",
@@ -23,10 +24,10 @@ const Inventory = () => {
       expiry: "18",
       green: "No",
       variants: JSON.stringify([
-        { name: "Light", sku: "FD-LIGHT", price: "19.99", stock: 199},
-        { name: "Medium", sku: "FD-MEDIUM", price: "19.99", stock: 90},
-        {name: "Dark", sku: "FD-DARK", price: "19.99", stock: 109}
-      ])
+        { name: "Light", sku: "FD-LIGHT", price: "19.99", stock: 199 },
+        { name: "Medium", sku: "FD-MEDIUM", price: "19.99", stock: 90 },
+        { name: "Dark", sku: "FD-DARK", price: "19.99", stock: 109 },
+      ]),
     },
     {
       name: "Compact Powder",
@@ -38,8 +39,8 @@ const Inventory = () => {
       variants: JSON.stringify([
         { name: "Light", sku: "FD-LIGHT", price: "15.5", stock: 200 },
         { name: "Medium", sku: "FD-MEDIUM", price: "15.5", stock: 89 },
-        { name: "Deep", sku: "FD-DEEP", price: "15.5", stock: 111 }
-      ])
+        { name: "Deep", sku: "FD-DEEP", price: "15.5", stock: 111 },
+      ]),
     },
     {
       name: "Waterproof Mascara",
@@ -47,7 +48,7 @@ const Inventory = () => {
       price: "14.99",
       quantity: 350,
       expiry: "12",
-      green: "No"
+      green: "No",
     },
     {
       name: "Gel Eyeliner",
@@ -58,9 +59,9 @@ const Inventory = () => {
       green: "Yes",
       variants: JSON.stringify([
         { name: "Black", sku: "EL-BLACK", price: "9.99", stock: 150 },
-        { name: "Brown", sku: "EL-BROWN", price: "9.99", stock: 270},
-        { name: "Blue", sku: "EL-BLUE", price: "9.99", stock: 180 }
-      ])
+        { name: "Brown", sku: "EL-BROWN", price: "9.99", stock: 270 },
+        { name: "Blue", sku: "EL-BLUE", price: "9.99", stock: 180 },
+      ]),
     },
     {
       name: "Blush Palette",
@@ -68,7 +69,7 @@ const Inventory = () => {
       price: "22",
       quantity: 250,
       expiry: "12",
-      green: "Yes"
+      green: "Yes",
     },
     {
       name: "Highlighter Stick",
@@ -76,7 +77,7 @@ const Inventory = () => {
       price: "13.75",
       quantity: 500,
       expiry: "24",
-      green: "No"
+      green: "No",
     },
     {
       name: "Setting Spray",
@@ -84,7 +85,7 @@ const Inventory = () => {
       price: "17.99",
       quantity: 300,
       expiry: "12",
-      green: "Yes"
+      green: "Yes",
     },
     {
       name: "BB Cream",
@@ -94,45 +95,61 @@ const Inventory = () => {
       expiry: "12",
       green: "No",
       variants: JSON.stringify([
-        { name: "Light", sku: "BB-LIGHT", price: "16.50", stock: 175},
-        { name: "Medium", sku: "BB-MEDIUM", price: "16.50", stock: 100},
-        { name: "Dark", sku: "BB-DARK", price: "16.50", stock: 125}
-      ])
+        { name: "Light", sku: "BB-LIGHT", price: "16.50", stock: 175 },
+        { name: "Medium", sku: "BB-MEDIUM", price: "16.50", stock: 100 },
+        { name: "Dark", sku: "BB-DARK", price: "16.50", stock: 125 },
+      ]),
     },
   ];
 
   return (
-    <div className="container">
-      <table className="responsive-table">
-        <caption>Beauty Product Inventory</caption>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Product ID</th>
-            <th>Price Per Unit(in $)</th>
-            <th>Quantity in Inventory</th>
-            <th>Expiry(in months)</th>
-            <th>Sustainable(Green/Non-green)</th>
-            <th>Variants</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product, index) => (
-            <ProductRow key={index} product={product} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <div className="container">
+        <table className="responsive-table">
+          <thead>
+            <tr>
+              <th colSpan="7" className="title">
+                Inventory
+              </th>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <th>Product ID</th>
+              <th>Price Per Unit(in $)</th>
+              <th>Quantity in Inventory</th>
+              <th>Expiry(in months)</th>
+              <th>Sustainable(Green/Non-green)</th>
+              <th>Variants</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product, index) => (
+              <ProductRow key={index} product={product} />
+            ))}
+          </tbody>
+        </table>
+      </div>
   );
 };
 
 const ProductRow = ({ product }) => {
   const [showVariants, setShowVariants] = useState(false);
-  const [quantity, setQuantity] = useState(product.quantity || 0);
+  const [quantity, setQuantity] = useState(product.quantity);
 
-  const handleIncrease = () => setQuantity((prev) => prev + 1);
-  const handleDecrease = () => setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
-  const handleChange = (e) => setQuantity(Number(e.target.value));
+  // Safe handling of variants
+  const [variants, setVariants] = useState(
+    product.variants ? JSON.parse(product.variants) : []
+  );
+
+  const handleProductQuantityChange = (e) => {
+    const value = Math.max(0, parseInt(e.target.value) || 0);
+    setQuantity(value);
+  };
+
+  const handleVariantQuantityChange = (index, e) => {
+    const updatedVariants = [...variants];
+    updatedVariants[index].stock = Math.max(0, parseInt(e.target.value) || 0);
+    setVariants(updatedVariants); 
+  };
 
   return (
     <>
@@ -141,19 +158,26 @@ const ProductRow = ({ product }) => {
         <td>{product.product_id}</td>
         <td>{product.price}</td>
         <td>
-          <button onClick={handleDecrease}>-</button>
-          <input type="number" value={quantity} onChange={handleChange} />
-          <button onClick={handleIncrease}>+</button>
+          <input
+            type="number"
+            value={quantity}
+            onChange={handleProductQuantityChange}
+            min="0"
+          />
         </td>
         <td>{product.expiry}</td>
         <td>{product.green}</td>
         <td>
-          <button onClick={() => setShowVariants(!showVariants)}>
-            {showVariants ? "Hide Variants" : "Show Variants"}
-          </button>
+          {variants.length > 0 ? (
+            <button onClick={() => setShowVariants(!showVariants)}>
+              {showVariants ? "Hide Variants" : "Show Variants"}
+            </button>
+          ) : (
+            "-"
+          )}
         </td>
       </tr>
-      {showVariants && product.variants && (
+      {showVariants && variants.length > 0 && (
         <tr>
           <td colSpan="7">
             <table className="nested-table">
@@ -166,12 +190,19 @@ const ProductRow = ({ product }) => {
                 </tr>
               </thead>
               <tbody>
-                {JSON.parse(product.variants).map((variant, idx) => (
+                {variants.map((variant, idx) => (
                   <tr key={idx}>
                     <td>{variant.name}</td>
                     <td>{variant.sku}</td>
                     <td>{variant.price}</td>
-                    <td>{variant.stock}</td>
+                    <td>
+                      <input
+                        type="number"
+                        value={variant.stock}
+                        onChange={(e) => handleVariantQuantityChange(idx, e)}
+                        min="0"
+                      />
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -183,4 +214,4 @@ const ProductRow = ({ product }) => {
   );
 };
 
-export default Inventory;
+export {Inventory};
