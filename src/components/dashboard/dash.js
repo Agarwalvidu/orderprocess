@@ -91,37 +91,38 @@ const Dashboard = () => {
 const steps = [
   {
     selector: ".sidebar-placeholder",
-    content: "This is the sidebar where you can navigate through different sections.",
+    content: "This is the sidebar where you can navigate through different sections. It provides quick access to different pages like 'Dashboard', 'Inventory', and 'Active-Orders'."
   },
   {
     selector: ".header-title",
-    content: "Welcome! This is your dashboard greeting message.",
+    content: "Welcome! This is your dashboard. It gives you an overview of your performance and can dynamically change based on your profile or activities.",
   },
   {
     selector: ".search-container",
-    content: "Use this search bar to find employees, products, or orders.",
+    content: "Use this search bar to find products, analysis, or orders. Simply type in the relevant keyword and hit enter, and the system will display the most relevant results based on your search criteria.",
   },
   {
     selector: ".graph-container",
-    content: "Here you can track your monthly sales performance.",
+    content: "Here you can track your monthly sales performance. The graph visualizes revenue over time, helping you identify your growth.",
   },
   {
     selector: ".top-countries-container",
-    content: "This section shows the top-performing cities.",
+    content: "This section shows the top-performing cities. You can view the top locations based on sales performance, user activity, or other metrics, helping you prioritize resources or target new regions.",
   },
   {
     selector: ".segmentation-container",
-    content: "See the segmentation of your customers based on different criteria.",
+    content: "See the segmentation of your customers based on different criteria like demographics, purchasing behavior, or engagement level. This allows for better-targeted marketing and personalized service.",
   },
   {
     selector: ".satisfaction-container",
-    content: "Track customer satisfaction with sentiment analysis data.",
+    content: "Track customer satisfaction with sentiment analysis data. This section uses feedback from various touchpoints to show how happy your customers are, helping you improve products and services.",
   },
   {
     selector: ".hero-product-container-out",
-    content: "Your best-selling product this month is highlighted here!",
+    content: "Your best-selling product this month is highlighted here! This section showcases your hero product, giving it prominent visibility so you can promote it further, analyze its success, and leverage its popularity in marketing.",
   },
 ];
+
 
 function Content() {
   return (
