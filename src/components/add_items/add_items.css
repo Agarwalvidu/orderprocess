@@ -108,9 +108,12 @@
   }
   
   /* Responsive */
-  @media (max-width: 500px) {
+  @media (max-width: 640px) {
     .add-inventory-form {
       width: 90%;
+    }
+    .add-inventory-container{
+      margin-left: 0;
     }
   }
   
