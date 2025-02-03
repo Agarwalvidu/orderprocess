@@ -1,7 +1,9 @@
+import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from "recharts";
-import "./dash.css";
 import { useNavigate } from "react-router-dom";
+import Tour from "reactour";
+import "./dash.css";
 
 
 const employeeData = [
@@ -70,12 +72,56 @@ const graphData = [
 });
 
 const Dashboard = () => {
+  const [isTourOpen, setIsTourOpen] = useState(false);
+
+  useEffect(() => {
+    const hasVisited = localStorage.getItem("hasVisited");
+    if (!hasVisited) {
+      setIsTourOpen(true);
+      localStorage.setItem("hasVisited", "true");
+    }
+  }, []);
   return (
     <div className="flex">
+      <Tour steps={steps} isOpen={isTourOpen} onRequestClose={() => setIsTourOpen(false)} />
       <Content/>
     </div>
   );
 }
+const steps = [
+  {
+    selector: ".sidebar-placeholder",
+    content: "This is the sidebar where you can navigate through different sections.",
+  },
+  {
+    selector: ".header-title",
+    content: "Welcome! This is your dashboard greeting message.",
+  },
+  {
+    selector: ".search-container",
+    content: "Use this search bar to find employees, products, or orders.",
+  },
+  {
+    selector: ".graph-container",
+    content: "Here you can track your monthly sales performance.",
+  },
+  {
+    selector: ".top-countries-container",
+    content: "This section shows the top-performing cities.",
+  },
+  {
+    selector: ".segmentation-container",
+    content: "See the segmentation of your customers based on different criteria.",
+  },
+  {
+    selector: ".satisfaction-container",
+    content: "Track customer satisfaction with sentiment analysis data.",
+  },
+  {
+    selector: ".hero-product-container-out",
+    content: "Your best-selling product this month is highlighted here!",
+  },
+];
 
 function Content() {
   return (
