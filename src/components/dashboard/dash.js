@@ -133,7 +133,7 @@ function Content() {
           <div className="header-content">
             <div className="header-left">
               <div className="header-title">
-                <div className="title-text">Hello Kabir</div>
+                <div className="title-text">Hello Nitya</div>
               </div>
               <div className="date-info">
                 <Icon path="res-react-dash-date-indicator" className="icon-small" />

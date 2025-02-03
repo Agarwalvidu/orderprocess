@@ -173,9 +173,10 @@ const sidebarItems = [
   
   <div className="sidebar-item-container">
     <div className="sidebar-item-content">
-      <Image path="mock_faces_8" className="image-size" />
+      <img
+            src={process.env.PUBLIC_URL + "/assets/nitya.jpg"} alt="Lipstick Hero" className="image-size" />
       <div className="sidebar-item-text">
-        Kabir Thapar
+        Nitya Singhal
       </div>
       <div className="sidebar-item-grow"></div>
       <Icon
