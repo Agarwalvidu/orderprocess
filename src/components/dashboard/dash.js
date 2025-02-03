@@ -175,10 +175,7 @@ function NameCard({ cardNumber, name, position, transactionAmount, rise, ordersP
             </div>
           </div>
 
-          {/* Display orders completed as percentage */}
-          <div className="orders-completed">
-            {`Orders Processed: ${((ordersProcessed / 5) * 100).toFixed(0)}%`}
-          </div>
+          <div className="tasks-completed">{`Orders Processed: ${((ordersProcessed / 5) * 100).toFixed(0)}%`}</div>
           <svg
             className="progress-bar"
             height="6"
@@ -193,6 +190,10 @@ function NameCard({ cardNumber, name, position, transactionAmount, rise, ordersP
               rx="3"
               fill="url(#paint0_linear)"
             />
+            <rect x="38" width="2" height="6" fill="#171717" />
+            <rect x="78" width="2" height="6" fill="#171717" />
+            <rect x="118" width="2" height="6" fill="#171717" />
+            <rect x="158" width="2" height="6" fill="#171717" />
             <defs>
               <linearGradient id="paint0_linear" x1="0" y1="0" x2="1" y2="0">
                 <stop stopColor="#8E76EF" />
