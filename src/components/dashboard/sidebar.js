@@ -43,7 +43,7 @@ const sidebarItems = [
         <div className="sidebar-container">
         <IconButton icon={faUser} className="icon-button" />
         <div className="react-text">
-    React
+        TrackXpert
   </div>
   <div className="flex-grow-container"></div>
   <IconButton

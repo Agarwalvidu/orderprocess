@@ -8,26 +8,26 @@ const employeeData = [
   {
     index: 1, // Manually assigned
     id: 1,
-    name: 'Esther Howard',
-    position: "Sale's Manager USA",
+    name: 'Active Orders = 1000',
+    position: "Fullfill them ASAP!",
     transactions: 3490,
     rise: true,
-    ordersProcessed: 3,
+    ordersProcessed: 2.50,
   },
   {
     index: 2,
     id: 2,
-    name: 'Eleanor Pena',
-    position: "Sale's Manager Europe",
+    name: 'Return Rate = 21.5%',
+    position: "13% lower than last month.",
     transactions: 590,
     rise: false,
-    ordersProcessed: 5,
+    ordersProcessed: 3.75,
   },
   {
     index: 3,
     id: 3,
-    name: 'Robert Fox',
-    position: "Sale's Manager Asia",
+    name: 'Total Profit = $1.2M ',
+    position: "For FY 2024-2025",
     transactions: 2600,
     rise: true,
     ordersProcessed: 1,
@@ -175,7 +175,7 @@ function NameCard({ cardNumber, name, position, transactionAmount, rise, ordersP
             </div>
           </div>
 
-          <div className="tasks-completed">{`Orders Processed: ${((ordersProcessed / 5) * 100).toFixed(0)}%`}</div>
+          <div className="tasks-completed">{`Goal Reached: ${((ordersProcessed / 5) * 100).toFixed(0)}%`}</div>
           <svg
             className="progress-bar"
             height="6"
@@ -185,7 +185,7 @@ function NameCard({ cardNumber, name, position, transactionAmount, rise, ordersP
           >
             <rect width="200" height="6" rx="3" fill="#2D2D2D" />
             <animated.rect
-              width={barPlayhead.interpolate((i) => i * (ordersProcessed / 5) * 200)}
+              width={barPlayhead.to((i) => (i * ordersProcessed * 40))}
               height="6"
               rx="3"
               fill="url(#paint0_linear)"
@@ -275,10 +275,9 @@ function TopCountries() {
   return (
     <div className="top-countries-container" style={{width:"95%"}}>
       <div className="top-countries-header">
-        <div className="title">Top Countries</div>
+        <div className="title">Top Cities</div>
         <Icon path="res-react-dash-plus" className="icon-medium" />
       </div>
-      <div className="favorites">favourites</div>
       {Citydata.map(({ name, rise, value, id }) => (
         <div className="country-item" key={id}>
           <div className="country-id">{id}</div>
@@ -402,7 +401,7 @@ function DisplayHero() {
         <div className="sub-text">10% higher than last month.</div>
         <div className="add-button" onClick={handleClick} style={{ cursor: "pointer" }}>
           <Icon path="res-react-dash-add-component" className="icon-small" />
-          <div className="button-text">Add more before the stock runs out!</div>
+          <div className="button-text">Add more before the stock runs out !!</div>
         </div>
       </div>
     </div>
