@@ -6,34 +6,34 @@ import { useNavigate } from "react-router-dom";
 
 const employeeData = [
   {
+    index: 1, // Manually assigned
     id: 1,
     name: 'Esther Howard',
-    position: "Sale's manager USA",
+    position: "Sale's Manager USA",
     transactions: 3490,
     rise: true,
-    ordersProcessed: 3
+    ordersProcessed: 3,
   },
-
   {
+    index: 2,
     id: 2,
     name: 'Eleanor Pena',
-    position: "Sale's manager Europe",
+    position: "Sale's Manager Europe",
     transactions: 590,
     rise: false,
-    tasksCompleted: 5,
-    imgId: 2,
+    ordersProcessed: 5,
   },
-
   {
+    index: 3,
     id: 3,
     name: 'Robert Fox',
-    position: "Sale's manager Asia",
+    position: "Sale's Manager Asia",
     transactions: 2600,
     rise: true,
-    tasksCompleted: 1,
-    imgId: 3,
+    ordersProcessed: 1,
   },
 ];
+
 
 const Citydata = [
   { name: 'Delhi NCR', rise: true, value: 21942.83, id: 1 },
@@ -107,18 +107,18 @@ function Content() {
             </form>
           </div>
         </div>
-        {employeeData.map(({ id, name, position, transactions, rise, tasksCompleted, imgId }) => (
+        {employeeData.map(({ id, name, position, transactions, rise, ordersProcessed }, index) => (
           <NameCard
             key={id}
-            id={id}
+            cardNumber={index + 1}  // Manually assigning the number
             name={name}
             position={position}
             transactionAmount={transactions}
             rise={rise}
-            tasksCompleted={tasksCompleted}
-            imgId={imgId}
+            ordersProcessed={ordersProcessed} 
           />
         ))}
+
 
         <div className="graph-container">
           <div className="graph-card">
@@ -154,7 +154,7 @@ function Content() {
   );
 }
 
-function NameCard({ name, position, transactionAmount, rise, tasksCompleted, imgId }) {
+function NameCard({ cardNumber, name, position, transactionAmount, rise, ordersProcessed }) {
   const { transactions, barPlayhead } = useSpring({
     transactions: transactionAmount,
     barPlayhead: 1,
@@ -164,19 +164,21 @@ function NameCard({ name, position, transactionAmount, rise, tasksCompleted, img
   return (
     <div className="name-card-container">
       <div className="name-card">
+        {/* Manually assigned card number */}
+        <div className="card-number">{cardNumber}</div>
+
         <div className="name-card-left">
           <div className="name-card-header">
-            <Image path={`mock_faces_${imgId}`} className="profile-img" />
             <div className="name-info">
-              <div className="name-title">
-                <div className="name-text">{name}</div>
-                <Icon path="res-react-dash-tick" />
-              </div>
+              <div className="name-title">{name}</div>
               <div className="position">{position}</div>
             </div>
           </div>
 
-          <div className="tasks-completed">{`${tasksCompleted} from 5 tasks completed`}</div>
+          {/* Display orders completed as percentage */}
+          <div className="orders-completed">
+            {`Orders Processed: ${((ordersProcessed / 5) * 100).toFixed(0)}%`}
+          </div>
           <svg
             className="progress-bar"
             height="6"
@@ -186,15 +188,11 @@ function NameCard({ name, position, transactionAmount, rise, tasksCompleted, img
           >
             <rect width="200" height="6" rx="3" fill="#2D2D2D" />
             <animated.rect
-              width={barPlayhead.interpolate((i) => i * (tasksCompleted / 5) * 200)}
+              width={barPlayhead.interpolate((i) => i * (ordersProcessed / 5) * 200)}
               height="6"
               rx="3"
               fill="url(#paint0_linear)"
             />
-            <rect x="38" width="2" height="6" fill="#171717" />
-            <rect x="78" width="2" height="6" fill="#171717" />
-            <rect x="118" width="2" height="6" fill="#171717" />
-            <rect x="158" width="2" height="6" fill="#171717" />
             <defs>
               <linearGradient id="paint0_linear" x1="0" y1="0" x2="1" y2="0">
                 <stop stopColor="#8E76EF" />
@@ -209,7 +207,11 @@ function NameCard({ name, position, transactionAmount, rise, tasksCompleted, img
           <animated.div className={`transaction-amount ${rise ? 'text-green' : 'text-red'}`}>
             {transactions.interpolate((i) => `$${i.toFixed(2)}`)}
           </animated.div>
-          <div className="last-6-month">Last 6 months</div>
+
+          {/* Display rise percentage */}
+          <div className="growth-percentage">
+            {`Growth: ${(rise ? '+' : '-')}${((transactionAmount / 5000) * 100).toFixed(1)}%`}
+          </div>
         </div>
       </div>
     </div>

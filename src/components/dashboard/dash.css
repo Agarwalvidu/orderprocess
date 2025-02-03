@@ -696,6 +696,24 @@ background: #1d1d1d;
   font-size: 14px;
 }
 
+.card-number {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+
 /* Responsive adjustments */
 @media screen and (min-width: 1024px) {
   .name-card-container {
